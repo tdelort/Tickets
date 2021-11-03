@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
+    [SerializeField]
+    private Vector2 size = new Vector2(6f, 4f);
     private GameObject item;
     private Vector2 offset;
 
@@ -33,6 +35,8 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButton(0) && item)
         {
             item.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)) - (Vector3)offset;
+            // clamp item position to the screen
+            item.transform.position = new Vector3(Mathf.Clamp(item.transform.position.x, -size.x, size.x), Mathf.Clamp(item.transform.position.y, -size.y, size.y), item.transform.position.z);
         }
     }
 }

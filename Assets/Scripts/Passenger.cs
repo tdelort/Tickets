@@ -45,7 +45,7 @@ public class Passenger : MonoBehaviour
     public Ticket ticket {get; set;}
     public Passeport passeport {get; set;}
 
-    public Passenger(Ticket ticket, Passeport passeport)
+    public void Init(Ticket ticket, Passeport passeport)
     {
         this.ticket = ticket;
         this.passeport = passeport;

@@ -70,6 +70,7 @@ public class PassengerControls : MonoBehaviour
 
     public void Set(Passenger p)
     {
+        originalZ = transform.position.z;
         passenger = p;
         foreach(ControlObject co in controlObjects)
         {

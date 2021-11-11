@@ -12,8 +12,6 @@ public class Interaction : MonoBehaviour
 
     [SerializeField]
     private PassengerControls passengerControls;
-    //public GameObject[] usagers = new GameObject[1];
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -21,7 +19,6 @@ public class Interaction : MonoBehaviour
     void Start()
     {
         isInteracting = false;
-        //usagers[0] = usage;
     }
 
     // Update is called once per frame
@@ -30,8 +27,7 @@ public class Interaction : MonoBehaviour
 
         //Clic pour intéragir
         if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E)){
-            // Temporary code : later, we will get the compoenent Passenger from the object and call one of its functions
-
+            
             passengerControls.Set(closestPassenger.GetComponent<Passenger>());
             passengerControls.gameObject.SetActive(true);
 
@@ -41,6 +37,7 @@ public class Interaction : MonoBehaviour
             passengerControls.gameObject.SetActive(false);
             isInteracting = false;
         }
+        //debug purpose only, the pause menu will be there
         else if ((Input.GetKeyDown(KeyCode.Escape)))
         {
             SceneManager.LoadScene("LevelSelection");
@@ -67,8 +64,6 @@ public class Interaction : MonoBehaviour
             }
         }
     }
-    
-
 
     private void OnTriggerExit2D(Collider2D collision)
     {

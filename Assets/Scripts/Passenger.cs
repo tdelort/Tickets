@@ -9,6 +9,15 @@ public class Passenger : MonoBehaviour
     double ticketProb = 0.5;
     double PassportProb = 1;
 
+    //hour
+    int ticketValidity = 1;
+    int autValidity = 5;
+    //day
+    int subValidity = 365;
+    //year
+    int passValidity = 5;
+    int idValidity = 5;
+
 
     public string passengerName;
     public string passengerSurname;
@@ -121,66 +130,85 @@ public class Passenger : MonoBehaviour
                     break;
             }
         }
+
+        setSprite();
     }
     
     private void setPermit()
     {
+        
+        DateTime texpiredTime = GameData.GameTime;
+        texpiredTime.AddHours(UnityEngine.Random.Range(0, ticketValidity));
+
+        
+        DateTime sexpiredTime = GameData.GameTime;
+        sexpiredTime.AddDays(UnityEngine.Random.Range(0, subValidity));
 
         double rand = coinFlip();
         if (rand < ticketProb)
         {
-            ticket = new Ticket(true, GameData.GameTime,1);
+            ticket = new Ticket(true, texpiredTime, ticketValidity);
             subscription = new Subscription(false, passengerName,
-                passengerSurname, GameData.GameTime, 365);
+                passengerSurname, sexpiredTime, subValidity);
         }
         else
         {
-            ticket = new Ticket(false, GameData.GameTime, 1);
+            ticket = new Ticket(false, texpiredTime, ticketValidity);
             subscription = new Subscription(true, passengerName,
-                passengerSurname, GameData.GameTime, 365);
+                passengerSurname, sexpiredTime, subValidity);
         }
     }
     private void setId()
     {
+        DateTime pexpiredTime = GameData.GameTime;
+        pexpiredTime.AddYears(UnityEngine.Random.Range(0, passValidity));
+
+        DateTime iexpiredTime = GameData.GameTime;
+        iexpiredTime.AddYears(UnityEngine.Random.Range(0, idValidity));
+
         double rand = coinFlip();
         if (rand < PassportProb)
         {
             passeport = new Passeport(true, passengerName,
-                passengerSurname, passengerAge, GameData.GameTime, 5);
+                passengerSurname, passengerAge, iexpiredTime, passValidity);
             id = new ID(false, passengerName, passengerSurname,
-                passengerAge, GameData.GameTime, 15);
+                passengerAge, iexpiredTime, idValidity);
         }
         else
         {
             passeport = new Passeport(false, passengerName,
-                passengerSurname, passengerAge, GameData.GameTime, 5);
+                passengerSurname, passengerAge, iexpiredTime, passValidity);
             id = new ID(true, passengerName, passengerSurname,
-                passengerAge, GameData.GameTime, 15);
+                passengerAge, iexpiredTime, idValidity);
         }
     }
     private void setAutorisation()
     {
+        DateTime autExpiredTime = GameData.GameTime;
+        autExpiredTime.AddHours(UnityEngine.Random.Range(0, autValidity));
+
         autorisation = new Autorisation(true, passengerName,
-            passengerSurname, GameData.GameTime, 5);
+            passengerSurname, autExpiredTime, autValidity);
     }
 
     private void makePermitFalse()
     {
         if (coinFlip() < 0.5)
         {
+            if (ticket.present)
+            {
+                DateTime texpiredTime = GameData.GameTime;
+                texpiredTime.AddHours(-1*UnityEngine.Random.Range(0, ticketValidity));
 
-        }
-        else
-        {
-            passeport.present = false;
-            id.present = false;
-        }
-    }
-    private void makeIdFalse()
-    {
-        if (coinFlip() < 0.5)
-        {
-            
+                ticket.expiredTime = texpiredTime;
+            }
+            else
+            {
+                DateTime sexpiredTime = GameData.GameTime;
+                sexpiredTime.AddDays(-1 * UnityEngine.Random.Range(0, subValidity));
+
+                subscription.expiredTime = sexpiredTime;
+            }
         }
         else
         {
@@ -188,11 +216,40 @@ public class Passenger : MonoBehaviour
             ticket.present = false;
         }
     }
+    private void makeIdFalse()
+    {
+        if (coinFlip() < 0.5)
+        {
+            if (passeport.present)
+            {
+                DateTime pexpiredTime = GameData.GameTime;
+                pexpiredTime.AddYears(-1 * UnityEngine.Random.Range(0, passValidity));
+
+                passeport.expiredTime = pexpiredTime;
+            }
+            else
+            {
+                DateTime iexpiredTime = GameData.GameTime;
+                iexpiredTime.AddYears(-1 * UnityEngine.Random.Range(0, idValidity));
+
+                id.expiredTime = iexpiredTime;
+            }
+        }
+        else
+        {
+
+            passeport.present = false;
+            id.present = false;
+        }
+    }
     private void makeAutorisationFalse()
     {
         if (coinFlip() < 0.5)
         {
+            DateTime autExpiredTime = GameData.GameTime;
+            autExpiredTime.AddHours(-1 * UnityEngine.Random.Range(0, autValidity));
 
+            autorisation.expiredTime = autExpiredTime;
         }
         else
         {
@@ -205,21 +262,26 @@ public class Passenger : MonoBehaviour
         return UnityEngine.Random.Range(0, 1);
     }
 
+    private void setSprite()
+    {
+        //TODO Fill this section
+    }
+
     public struct Ticket
     {
         public bool present;
-        public DateTime compostTime;
+        public DateTime expiredTime;
         //in hour
         public int validityPeriod;
 
         public string ToText()
         {
-            return compostTime.ToString() + " \n validity periode : " + validityPeriod;
+            return expiredTime.ToString() + " \n validity periode : " + validityPeriod;
         }
-        public Ticket(bool present, DateTime compostTime, int validityPeriod)
+        public Ticket(bool present, DateTime expiredTime, int validityPeriod)
         {
             this.present = present;
-            this.compostTime = compostTime;
+            this.expiredTime = expiredTime;
             this.validityPeriod = validityPeriod;
         }
     };
@@ -228,22 +290,22 @@ public class Passenger : MonoBehaviour
         public bool present;
         public string name;
         public string surname;
-        public DateTime deliveryTime;
+        public DateTime expiredTime;
         //in day
         public int validityPeriod;
 
         public string ToText() 
         {
             return name + " " + surname + "\n" +
-                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
         }
         public Subscription(bool present, string name, string surname,
-            DateTime deliveryTime, int validityPeriod)
+            DateTime expiredTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
-            this.deliveryTime = deliveryTime;
+            this.expiredTime = expiredTime;
             this.validityPeriod = validityPeriod;
         }
     };
@@ -253,22 +315,22 @@ public class Passenger : MonoBehaviour
         public string name;
         public string surname;
         public int age;
-        public DateTime deliveryTime;
+        public DateTime expiredTime;
         //in year
         public int validityPeriod;
         public string ToText()
         {
             return name + " " + surname + " - " + age + "\n" +
-                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
         }
         public Passeport(bool present, string name, string surname, int age,
-            DateTime deliveryTime, int validityPeriod)
+            DateTime expiredTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
             this.age = age;
-            this.deliveryTime = deliveryTime;
+            this.expiredTime = expiredTime;
             this.validityPeriod = validityPeriod;
         }
     };
@@ -278,22 +340,22 @@ public class Passenger : MonoBehaviour
         public string name;
         public string surname;
         public int age;
-        public DateTime deliveryTime;
+        public DateTime expiredTime;
         //in year
         public int validityPeriod;
         public string ToText()
         {
             return name + " " + surname + " - " + age + "\n" +
-                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
         }
         public ID(bool present, string name, string surname, int age,
-            DateTime deliveryTime, int validityPeriod)
+            DateTime expiredTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
             this.age = age;
-            this.deliveryTime = deliveryTime;
+            this.expiredTime = expiredTime;
             this.validityPeriod = validityPeriod;
         }
     };
@@ -302,7 +364,7 @@ public class Passenger : MonoBehaviour
         public bool present;
         public string name;
         public string surname;
-        public DateTime deliveryTime;
+        public DateTime expiredTime;
         //in hour
         public int validityPeriod;
 
@@ -310,15 +372,15 @@ public class Passenger : MonoBehaviour
         public string ToText()
         {
             return name + " " + surname + "\n" +
-                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
         }
         public Autorisation(bool present, string name,
-            string surname, DateTime deliveryTime, int validityPeriod)
+            string surname, DateTime expiredTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
-            this.deliveryTime = deliveryTime;
+            this.expiredTime = expiredTime;
             this.validityPeriod = validityPeriod;
         }
     };

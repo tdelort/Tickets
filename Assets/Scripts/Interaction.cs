@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Interaction : MonoBehaviour
 {  
-    public GameObject usage;
-    public GameObject touchE;
-    public bool canInteract;
     public bool isInteracting;
+    private GameObject closestPassenger;
 
     [SerializeField]
     private PassengerControls passengerControls;
     //public GameObject[] usagers = new GameObject[1];
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+    }
     void Start()
     {
-        canInteract = false;
         isInteracting = false;
         //usagers[0] = usage;
     }
@@ -25,42 +27,67 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Test Proximité
-        //foreach (GameObject usager in usagers)
-        //{
-        if(Math.Abs(transform.position.x - usage.transform.position.x) <= 1f && !isInteracting){
-            touchE.SetActive(true);
-            canInteract = true;
-            //usage.GetComponent<Image>().SetActive(true);
-        }
-        if(Math.Abs(transform.position.x - usage.transform.position.x) > 1f){
-            touchE.SetActive(false);
-            canInteract = false;
-            //usage.GetComponent<Image>().SetActive(true);
-        }
-        //}
 
         //Clic pour intéragir
-        if(canInteract && Input.GetKeyDown(KeyCode.E)){
+        if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E)){
             // Temporary code : later, we will get the compoenent Passenger from the object and call one of its functions
 
-            Debug.Log("Test started");
-
-            Passenger passenger = gameObject.AddComponent<Passenger>();
-            passenger.Init(true, true);
-
-            passengerControls.Set(passenger);
+            passengerControls.Set(closestPassenger.GetComponent<Passenger>());
             passengerControls.gameObject.SetActive(true);
 
             isInteracting = true;
-            canInteract = false;
         }    
         else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))){
             passengerControls.gameObject.SetActive(false);
             isInteracting = false;
-            canInteract = true;
         }
-        
-        
+        else if ((Input.GetKeyDown(KeyCode.Escape)))
+        {
+            SceneManager.LoadScene("LevelSelection");
+        }
+
+
+    }
+    //This can be optimisable, but for now it works just fine
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (closestPassenger == null)
+        {
+            setClosestPassenger(collision.gameObject);
+        }
+        else if (closestPassenger != collision.gameObject)
+        {
+            float distToBeat = Vector3.Distance(this.transform.position,
+                closestPassenger.transform.position);
+            float dist = Vector3.Distance(this.transform.position,
+                collision.transform.position);
+            if (dist < distToBeat)
+            {
+                setClosestPassenger(collision.gameObject);
+            }
+        }
+    }
+    
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (closestPassenger.Equals(collision.gameObject))
+        {
+            setClosestPassenger(null);
+        }
+    }
+
+    private void setClosestPassenger(GameObject passenger)
+    {
+        if (closestPassenger != null)
+        {
+            closestPassenger.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        closestPassenger = passenger;
+        if (closestPassenger != null)
+        {
+            closestPassenger.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 }

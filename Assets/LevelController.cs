@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelController : MonoBehaviour
+public class MyLevelController : MonoBehaviour
 {
     public GameObject Spawnpoints;
     public GameObject passengerPrefab;
@@ -42,6 +42,7 @@ public class LevelController : MonoBehaviour
             }
 
                 passenger.SetActive(true);
+            passenger.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

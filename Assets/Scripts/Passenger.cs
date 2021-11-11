@@ -2,18 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class Passenger : MonoBehaviour
 {
     double ticketProb = 0.5;
     double PassportProb = 1;
-    //in minutes
-    int ticketValidity = 60;
-    //in day
-    int subscriptionValidity = 360;
-    //in year
-    int passeportValidity = 5;
-    int idValidity = 15;
 
 
     public string passengerName;
@@ -37,7 +31,7 @@ public class Passenger : MonoBehaviour
     {
         passengerName = nameGenerator.getRandName();
         passengerSurname = nameGenerator.getRandName();
-        passengerAge = Random.Range(15, 85);
+        passengerAge = UnityEngine.Random.Range(15, 85);
         int level = GameData.getCurrentLevel();
         setPermit();
         if (level > 0)
@@ -52,7 +46,7 @@ public class Passenger : MonoBehaviour
 
         if (!inOrder)
         {
-            float coin = coinFlip();
+            double coin = coinFlip();
             switch (level)
             {
                 case 0:
@@ -91,7 +85,7 @@ public class Passenger : MonoBehaviour
 
         if (illegal)
         {
-            float coin = coinFlip();
+            double coin = coinFlip();
             switch (level)
             {
                 case 0:
@@ -132,46 +126,42 @@ public class Passenger : MonoBehaviour
     private void setPermit()
     {
 
-        float rand = Random.Range(0, 1);
+        double rand = coinFlip();
         if (rand < ticketProb)
         {
-            ticket = new Ticket(true, 10, 30,
-                GameData.Day, GameData.Month, GameData.Year);
+            ticket = new Ticket(true, GameData.GameTime,1);
             subscription = new Subscription(false, passengerName,
-                passengerSurname, 01, 01,
-                1999);
+                passengerSurname, GameData.GameTime, 365);
         }
         else
         {
-            ticket = new Ticket(false, 10, 10, GameData.Day,
-                GameData.Month, GameData.Year);
+            ticket = new Ticket(false, GameData.GameTime, 1);
             subscription = new Subscription(true, passengerName,
-                passengerSurname, 10, 10,
-                1000);
+                passengerSurname, GameData.GameTime, 365);
         }
     }
     private void setId()
     {
-        float rand = Random.Range(0, 1);
+        double rand = coinFlip();
         if (rand < PassportProb)
         {
             passeport = new Passeport(true, passengerName,
-                passengerSurname, passengerAge, 30, 2, 2017);
+                passengerSurname, passengerAge, GameData.GameTime, 5);
             id = new ID(false, passengerName, passengerSurname,
-                passengerAge, 30, 2, 2017);
+                passengerAge, GameData.GameTime, 15);
         }
         else
         {
             passeport = new Passeport(false, passengerName,
-                passengerSurname, passengerAge, 30, 2, 2017);
+                passengerSurname, passengerAge, GameData.GameTime, 5);
             id = new ID(true, passengerName, passengerSurname,
-                passengerAge, 30, 2, 2017);
+                passengerAge, GameData.GameTime, 15);
         }
     }
     private void setAutorisation()
     {
         autorisation = new Autorisation(true, passengerName,
-            passengerSurname, passengerAge, 30, 2, 2017);
+            passengerSurname, GameData.GameTime, 5);
     }
 
     private void makePermitFalse()
@@ -210,32 +200,27 @@ public class Passenger : MonoBehaviour
         }
     }
 
-    private float coinFlip()
+    private double coinFlip()
     {
-        return Random.Range(0, 1);
+        return UnityEngine.Random.Range(0, 1);
     }
 
     public struct Ticket
     {
         public bool present;
-        public int minute, hour, day, month, year;
+        public DateTime compostTime;
+        //in hour
+        public int validityPeriod;
 
         public string ToText()
         {
-            return '\n' + day.ToString() + '-' + month.ToString() +
-    '-' + year.ToString() + ':' + hour.ToString() + ':' +
-    minute.ToString();
+            return compostTime.ToString() + " \n validity periode : " + validityPeriod;
         }
-        public Ticket(bool present, int minute, int hour, int day,
-            int month,
-            int year)
+        public Ticket(bool present, DateTime compostTime, int validityPeriod)
         {
             this.present = present;
-            this.minute = minute;
-            this.hour = hour;
-            this.day = day;
-            this.month = month;
-            this.year = year;
+            this.compostTime = compostTime;
+            this.validityPeriod = validityPeriod;
         }
     };
     public struct Subscription
@@ -243,19 +228,23 @@ public class Passenger : MonoBehaviour
         public bool present;
         public string name;
         public string surname;
-        public int day, month, year;
+        public DateTime deliveryTime;
+        //in day
+        public int validityPeriod;
 
-        public string ToText() { return name + '\n' + day + '-' +
-                month + '-' + year; }
+        public string ToText() 
+        {
+            return name + " " + surname + "\n" +
+                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+        }
         public Subscription(bool present, string name, string surname,
-            int day, int month, int year)
+            DateTime deliveryTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
-            this.day = day;
-            this.month = month;
-            this.year = year;
+            this.deliveryTime = deliveryTime;
+            this.validityPeriod = validityPeriod;
         }
     };
     public struct Passeport
@@ -264,19 +253,23 @@ public class Passenger : MonoBehaviour
         public string name;
         public string surname;
         public int age;
-        public int day, month, year;
-        public string ToText() { return name + ' ' + surname +
-                '\n' + day + '-' + month + '-' + year; }
-        public Passeport(bool present, string name, string surname,
-            int age, int day, int month, int year)
+        public DateTime deliveryTime;
+        //in year
+        public int validityPeriod;
+        public string ToText()
+        {
+            return name + " " + surname + " - " + age + "\n" +
+                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+        }
+        public Passeport(bool present, string name, string surname, int age,
+            DateTime deliveryTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
             this.age = age;
-            this.day = day;
-            this.month = month;
-            this.year = year;
+            this.deliveryTime = deliveryTime;
+            this.validityPeriod = validityPeriod;
         }
     };
     public struct ID
@@ -285,19 +278,23 @@ public class Passenger : MonoBehaviour
         public string name;
         public string surname;
         public int age;
-        public int day, month, year;
-        public string ToText() { return name + ' ' + surname +
-                '\n' + day + '-' + month + '-' + year; }
-        public ID(bool present, string name, string surname,
-            int age, int day, int month, int year)
+        public DateTime deliveryTime;
+        //in year
+        public int validityPeriod;
+        public string ToText()
+        {
+            return name + " " + surname + " - " + age + "\n" +
+                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
+        }
+        public ID(bool present, string name, string surname, int age,
+            DateTime deliveryTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
             this.age = age;
-            this.day = day;
-            this.month = month;
-            this.year = year;
+            this.deliveryTime = deliveryTime;
+            this.validityPeriod = validityPeriod;
         }
     };
     public struct Autorisation
@@ -305,27 +302,24 @@ public class Passenger : MonoBehaviour
         public bool present;
         public string name;
         public string surname;
-        public int duration;
-        public int day, month, year;
+        public DateTime deliveryTime;
+        //in hour
+        public int validityPeriod;
 
 
         public string ToText()
         {
-            return name + ' ' + surname + '\n' + day + '-' +
-    month + '-' + year + '-' + duration;
+            return name + " " + surname + "\n" +
+                deliveryTime.ToString() + " \n validity periode : " + validityPeriod;
         }
         public Autorisation(bool present, string name,
-            string surname, int duration,int day, int month,
-            int year)
+            string surname, DateTime deliveryTime, int validityPeriod)
         {
             this.present = present;
             this.name = name;
             this.surname = surname;
-            this.duration = duration;
-            this.day = day;
-            this.month = month;
-            this.year = year;
-
+            this.deliveryTime = deliveryTime;
+            this.validityPeriod = validityPeriod;
         }
     };
 }
@@ -346,9 +340,8 @@ public static class nameGenerator
             string data = reader.ReadToEnd();
             names = data.Split(char.Parse("\n"));
             reader.Close();
-            Debug.Log(names);
         }
-        int i = Random.Range(0, 18239);
+        int i = UnityEngine.Random.Range(0, 18239);
         return names[i];
     }
 

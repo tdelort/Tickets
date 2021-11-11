@@ -22,6 +22,11 @@ public static class GameData
     public static void setCurrentLevel(int level)
     {
     currentLevel = level;
+
+    NbPassenger = 6;
+    NbNotInOrderPassenger = 2;
+    NbIlegalActionPassenger = 2;
+
         switch (level)
         {
             case 0:
@@ -70,5 +75,8 @@ public static class GameData
     public static int Hour { get; set; }
     public static int Minute { get; set; }
     public static int Seconde { get; set; }
+    public static int NbPassenger { get; set; }
+    public static int NbNotInOrderPassenger { get; set; }
+    public static int NbIlegalActionPassenger { get; set; }
 }
 

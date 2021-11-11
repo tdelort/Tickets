@@ -314,9 +314,9 @@ public class Passenger : MonoBehaviour
             return name + ' ' + surname + '\n' + day + '-' +
     month + '-' + year + '-' + duration;
         }
-        public Autorisation(bool present, string name, string surname,
-            int duration,
-            int day, int month, int year)
+        public Autorisation(bool present, string name,
+            string surname, int duration,int day, int month,
+            int year)
         {
             this.present = present;
             this.name = name;
@@ -338,8 +338,9 @@ public static class nameGenerator
 
     public static string getRandName()
     {
-        if (names.Length < 1)
+        if (names==null)
         {
+            names = new string[18239+1];
             string path = "Assets/Resources/names.txt";
             StreamReader reader = new StreamReader(path);
             string data = reader.ReadToEnd();

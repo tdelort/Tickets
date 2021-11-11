@@ -17,10 +17,7 @@ public class PassengerControlsTests : MonoBehaviour
             Debug.Log("Test started");
 
             Passenger passenger = gameObject.AddComponent<Passenger>();
-            passenger.Init(
-                new Passenger.Ticket(true, "John", 13, 2, 6, 2023),
-                new Passenger.Passeport(true, "Dave", "Strider", 26, 30, 2, 2017)
-            );
+            passenger.Init(true, true);
 
             passengerControls.Set(passenger);
             passengerControls.gameObject.SetActive(true);

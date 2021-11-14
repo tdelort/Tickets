@@ -5,7 +5,7 @@
 |  Nom              | Code Permanent | Role               |
 |-------------------|----------------|--------------------|
 |  Wajih Alaoui     | ALAM05129904   |                    |
-|  Tristan Delort   | DELT22019904   |  **Scrum Master**  |
+|  Tristan Delort   | DELT22019904   |  **Scrum Master**  | <--! auto proclamé -->
 |  Hugo Deniau      | DENH23099907   |                    |
 |  Loïs Deniau      | DENL25019903   |                    |
 |  Lucien Mocrette  | MORL07049908   |                    |
@@ -82,7 +82,7 @@
 
 ## Confiance
 
-### Taux de confiance de l'équipe dans l'itération
+### Taux de confiance de l'équipe dans l'itération suivante
 
 |           | :(    | :&#124;   | :)    | :D    |
 |:---------:|:-----:|:---------:|:-----:|:-----:|
@@ -103,3 +103,11 @@
 | Hugo      |  *.*  |  *.*      |  *.*  |  *.*  |
 | Loïs      |  *.*  |  *.*      |  *.*  |  *.*  |
 | Lucien    |  *.*  |  *.*      |  *.*  |  *.*  |
+
+## Screenshots
+
+|   |   |
+|---|---|
+| ![](img/idle.png) | ![](img/walk.png) |
+| ![](img/E.png) | ![](img/interact.png) |
+| ![](img/papers.png) |  |

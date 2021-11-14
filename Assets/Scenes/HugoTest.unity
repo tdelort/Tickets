@@ -728,6 +728,7 @@ GameObject:
   - component: {fileID: 1572675770}
   - component: {fileID: 1572675769}
   - component: {fileID: 1572675772}
+  - component: {fileID: 1572675773}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -795,13 +796,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6cfc2aba35a9f4288f169cf27c4a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 150
-  player: {fileID: 438407885}
   usage: {fileID: 1777152490}
   touchE: {fileID: 4254409972315862648}
-  textTestInteraction: {fileID: 1035981927}
   canInteract: 0
   isInteracting: 0
+  passengerControls: {fileID: 0}
+--- !u!114 &1572675773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572675768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4676599c6cd6c7e40a41dd3ad3e2f774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabUsager: {fileID: 3002150747364196507, guid: e3c62b5b4934b7f418cafe9b6aa3e60d, type: 3}
 --- !u!1 &1777152490
 GameObject:
   m_ObjectHideFlags: 0

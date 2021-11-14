@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usage: {fileID: 0}
-  touchE: {fileID: 1518086210326091049, guid: b23a2976ff3aeb0478881903f054aeed, type: 3}
+  touchE: {fileID: 0}
   canInteract: 0
   isInteracting: 0
   animator: {fileID: 8751341945269819926}

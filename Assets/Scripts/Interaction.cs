@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour
     public GameObject touchE;
     public bool canInteract;
     public bool isInteracting;
+    public DialogueManager dialogueManager;
 
     [SerializeField]
     private PassengerControls passengerControls;
@@ -62,6 +63,7 @@ public class Interaction : MonoBehaviour
             passengerControls.gameObject.SetActive(false);
             isInteracting = false;
             canInteract = true;
+            dialogueManager.EndDialogue();
         }
         
         

@@ -11,6 +11,8 @@ public class Interaction : MonoBehaviour
     public bool canInteract;
     public bool isInteracting;
 
+    public Animator animator;
+
     [SerializeField]
     private PassengerControls passengerControls;
     //public GameObject[] usagers = new GameObject[1];
@@ -42,21 +44,7 @@ public class Interaction : MonoBehaviour
 
         //Clic pour intéragir
         if(canInteract && Input.GetKeyDown(KeyCode.E)){
-            // Temporary code : later, we will get the compoenent Passenger from the object and call one of its functions
-
-            Debug.Log("Test started");
-
-            Passenger passenger = gameObject.AddComponent<Passenger>();
-            passenger.Init(
-                new Passenger.Ticket(true, "John", 13, 2, 6, 2023),
-                new Passenger.Passeport(true, "Dave", "Strider", 26, 30, 2, 2017)
-            );
-
-            passengerControls.Set(passenger);
-            passengerControls.gameObject.SetActive(true);
-
-            isInteracting = true;
-            canInteract = false;
+            StartCoroutine(Interact());
         }    
         else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))){
             passengerControls.gameObject.SetActive(false);
@@ -65,5 +53,26 @@ public class Interaction : MonoBehaviour
         }
         
         
+    }
+
+    IEnumerator Interact()
+    {
+        animator.SetTrigger("Interact");
+        Debug.Log("Test started");
+
+        Passenger passenger = gameObject.AddComponent<Passenger>();
+        passenger.Init(
+            new Passenger.Ticket(true, "John", 13, 2, 6, 2023),
+            new Passenger.Passeport(true, "Dave", "Strider", 26, 30, 2, 2017)
+        );
+
+        canInteract = false;
+        isInteracting = true;
+
+        yield return new WaitForSeconds(1f);
+
+        passengerControls.Set(passenger);
+        passengerControls.gameObject.SetActive(true);
+
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 2.0f;
-    public GameObject playerRenderer;
+    public SpriteRenderer sprite;
+    public Animator animator;
     public float leftValue, rightValue;
     public bool direction; //true if face left
     
@@ -18,12 +19,18 @@ public class PlayerController : MonoBehaviour
         if(Input.GetAxis("Horizontal") > 0 && transform.position.x < rightValue){
             transform.Translate(new Vector3(playerSpeed*Time.deltaTime, 0f, 0f));
             direction = true;
-            playerRenderer.GetComponent<Transform>().rotation = new Quaternion(0,0,0,0);
+            sprite.flipX = false;
+            animator.SetBool("isMoving", true);
         }
         else if(Input.GetAxis("Horizontal") < 0 && transform.position.x > leftValue){
             transform.Translate(new Vector3(- playerSpeed*Time.deltaTime, 0f, 0f));
             direction = false;
-            playerRenderer.GetComponent<Transform>().rotation = new Quaternion(0,180,0,0);
+            sprite.flipX = true;
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
         
     }

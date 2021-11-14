@@ -1,26 +1,25 @@
 # Rapport d'itération  
 
-## Composition de l'équipe 
+## Composition de l'équipe
 
 |  Nom              | Code Permanent | Role               |
 |-------------------|----------------|--------------------|
 |  Wajih Alaoui     | ALAM05129904   |                    |
-|  Tristan Delort   | DELT22019904   |  **Scrum Master**  | <--! auto proclamé -->
+|  Tristan Delort   | DELT22019904   |  **Scrum Master**  |
 |  Hugo Deniau      | DENH23099907   |                    |
 |  Loïs Deniau      | DENL25019903   |                    |
 |  Lucien Mocrette  | MORL07049908   |                    |
 
 ## Bilan de l'itération précédente
 
-### Évènements 
+### Évènements
 
-*Quels sont les évènements qui ont marqué l'itération précédente? Répertoriez ici les évènements qui ont eu un impact sur ce qui était prévu à l'itération précédente.*
-> Répondre ici
+> La remise des projets de mi-trimestre a un peu retardé le developpement.
 
 ### Taux de complétion de l'itération  
 
 *Quel est le nombre d'éléments terminés par rapport au nombre total d'éléments prévu pour l'itération?*
-> *9 terminés / 10 prévues = 80%*
+> *8 terminés / 9 prévues = 80%*
 
 ### Liste des User Stories terminées
 
@@ -43,16 +42,17 @@
 ### Bilans des retours et des précédentes actions
 
 *Quels sont les retours faits par l'équipe pendant la rétrospective? Quelles sont les actions qui ont apporté quelque chose ou non?*
-> Répondre ici
+> La gestion du sprint et des user story doit être fait par une personne qui verifie la bonne complétion du travail (Scrum Master) en les validant avec Product Owner.
 
 ### Actions prises pour la prochaine itération
 
 *Quelles sont les actions décidées par l'équipe pour la prochaine itération ?*
+> Élire Tristan en Scrum Master pour avoir une meilleur gestion des User Story et du travail d'équipe.
 
 ### Axes d'améliorations
 
 *Quels sont les axes d'améliorations pour les personnes qui ont tenu les rôles de PO, SM et Dev sur la précédente itération?*
-> Répondre ici
+> Mieux assigner la difficulté des taches avant de les partager entre les différents développeurs. Mieux communiquer entre nous pour éviter de devoir coder la partie d'un autre, ou de se retrouver bloqué en attendant qu'il finisse.
 
 ## Prévisions de l'itération suivante  
 
@@ -64,7 +64,7 @@
 ### Titre des User Stories reportées
 
 *Lister ici les éléments des itérations précédentes qui ont été reportés à l'itération suivante. Ces éléments ont dû être revus et corrigés par le PO.*
-> Répondre ici
+> La User Story de l'implémentation des usagers spéciaux est reportée au prochain sprint.
 
 ### Titre des nouvelles User Stories
 
@@ -79,6 +79,8 @@
   - [ ] Les usagers ont une animation de marche
   - [ ] Les usagers ont une animation d'interaction
   - [ ] Les animations sont ajoutées dans Unity
+- En tant que joueur, je vais rencontrer des usagers ayant un comportement spécial et clé à l'histoire du jeu
+  - [ ] Un spécialisation des passager normaux qui permet l'ajout de dialogue et comportements spéciaux
 
 ## Confiance
 
@@ -86,11 +88,11 @@
 
 |           | :(    | :&#124;   | :)    | :D    |
 |:---------:|:-----:|:---------:|:-----:|:-----:|
-| Wajih     |  *.*  |  *.*      |  *.*  |  *.*  |
+| Wajih     |  *.*  |  *X*      |  *.*  |  *.*  |
 | Tristan   |  *.*  |  *.*      |  *X*  |  *.*  |
-| Hugo      |  *.*  |  *.*      |  *.*  |  *.*  |
-| Loïs      |  *.*  |  *.*      |  *.*  |  *.*  |
-| Lucien    |  *.*  |  *.*      |  *.*  |  *.*  |
+| Hugo      |  *.*  |  *.*      |  *X*  |  *.*  |
+| Loïs      |  *.*  |  *X*      |  *.*  |  *.*  |
+| Lucien    |  *.*  |  *.*      |  *X*  |  *.*  |
 
 ### Taux de confiance de l'équipe pour la réalisation du projet
 
@@ -98,16 +100,20 @@
 
 |           | :(    | :&#124;   | :)    | :D    |
 |:---------:|:-----:|:---------:|:-----:|:-----:|
-| Wajih     |  *.*  |  *.*      |  *.*  |  *.*  |
+| Wajih     |  *.*  |  *.*      |  *.*  |  *X*  |
 | Tristan   |  *.*  |  *.*      |  *X*  |  *.*  |
-| Hugo      |  *.*  |  *.*      |  *.*  |  *.*  |
-| Loïs      |  *.*  |  *.*      |  *.*  |  *.*  |
-| Lucien    |  *.*  |  *.*      |  *.*  |  *.*  |
+| Hugo      |  *.*  |  *.*      |  *X*  |  *.*  |
+| Loïs      |  *.*  |  *.*      |  *.*  |  *X*  |
+| Lucien    |  *.*  |  *.*      |  *.*  |  *X*  |
 
 ## Screenshots
 
 |   |   |
 |---|---|
+| Animations | |
 | ![](img/idle.png) | ![](img/walk.png) |
 | ![](img/E.png) | ![](img/interact.png) |
-| ![](img/papers.png) |  |
+| Interface de controle des usagers| Pièce d'indentité qui change en fonction des usagers |
+| ![](img/papers.png) | ![](img/passeport.png) |
+| Création de passagers avec des informations différentes en fonction du niveau | |
+| ![](img/multiple_passengers.png) |  |

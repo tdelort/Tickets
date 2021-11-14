@@ -8,7 +8,13 @@ using UnityEngine.SceneManagement;
 public class Interaction : MonoBehaviour
 {  
     public bool isInteracting;
+
     private GameObject closestPassenger;
+
+    public DialogueManager dialogueManager;
+
+    public Animator animator;
+
 
     [SerializeField]
     private PassengerControls passengerControls;
@@ -26,16 +32,17 @@ public class Interaction : MonoBehaviour
     {
 
         //Clic pour intéragir
-        if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E)){
-            
-            passengerControls.Set(closestPassenger.GetComponent<Passenger>());
-            passengerControls.gameObject.SetActive(true);
 
-            isInteracting = true;
+        if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(Interact());
         }    
-        else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))){
+        else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
+        {
             passengerControls.gameObject.SetActive(false);
             isInteracting = false;
+            dialogueManager.EndDialogue();
+
         }
         //debug purpose only, the pause menu will be there
         else if ((Input.GetKeyDown(KeyCode.Escape)))
@@ -84,5 +91,18 @@ public class Interaction : MonoBehaviour
         {
             closestPassenger.transform.GetChild(0).gameObject.SetActive(true);
         }
+    }
+
+    IEnumerator Interact()
+    {
+        isInteracting = true;
+        animator.SetTrigger("Interact");
+        Debug.Log("Test started");
+
+        yield return new WaitForSeconds(1f);
+        
+        passengerControls.Set(closestPassenger.GetComponent<Passenger>());
+        passengerControls.gameObject.SetActive(true);
+
     }
 }

@@ -56,6 +56,7 @@ public class PassengerControls : MonoBehaviour
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
                     // Add acion to fine the passenger here
                     fine = false;
+                    GameObject.FindObjectOfType<Interaction>().EndInteract();
                 }
 
                 if(fine && hit.collider.gameObject.CompareTag("CancelButton"))

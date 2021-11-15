@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class MyLevelController : MonoBehaviour
 {
-    public GameObject Spawnpoints;
     public GameObject passengerPrefab;
     // Start is called before the first frame update
+
+    // Metro doors position
+    public Transform[] spawnPoints;
+
+    [SerializeField] private Transform leftBound;
+    [SerializeField] private Transform rightBound;
+
+    private List<GameObject> passengers = new List<GameObject>();
+    private List<Vector2> startPositions = new List<Vector2>();
+    private List<Vector2> endPositions = new List<Vector2>();
+
     void Start()
-    {
-        Shuffle();
-        spawnPassengers();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void spawnPassengers()
     {
         int nbNIOPass = GameData.NbNotInOrderPassenger;
         int nbIlePass = GameData.NbIlegalActionPassenger;
-        for (int i = 0; i < GameData.NbPassenger; i++){
-            GameObject passenger = Instantiate(passengerPrefab,
-                Spawnpoints.transform.GetChild(i).position, Quaternion.identity);
+
+        for (int i = 0; i < GameData.NbPassenger; i++)
+        {
+            Vector2 spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+            GameObject passenger = Instantiate(passengerPrefab, spawnPoint, Quaternion.identity);
+            passengers.Add(passenger);
+            startPositions.Add(spawnPoint);
+
+            Vector2 endPosition = new Vector2(Random.Range(leftBound.position.x, rightBound.position.x), spawnPoint.y);
+            endPositions.Add(endPosition);
+
             if (nbNIOPass > 0)
             {
                 passenger.GetComponent<Passenger>().Init(false, true);
@@ -46,12 +52,17 @@ public class MyLevelController : MonoBehaviour
         }
     }
 
-    private void Shuffle()
+    float elapsedTime = 0;
+    float percentageCompleted = 0;
+    float desiredDuration = 3f;
+
+    void Update()
     {
-        for (int i = 0; i < Spawnpoints.transform.childCount; i++)
+        elapsedTime += Time.deltaTime;
+        percentageCompleted = elapsedTime / desiredDuration;
+        for (int i = 0; i < passengers.Count; i++)
         {
-            int rnd = Random.Range(0, Spawnpoints.transform.childCount);
-            Spawnpoints.transform.GetChild(i).SetSiblingIndex(rnd);
+            passengers[i].transform.position = Vector3.Lerp(startPositions[i], endPositions[i], percentageCompleted);
         }
     }
 }

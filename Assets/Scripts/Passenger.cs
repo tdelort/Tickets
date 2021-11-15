@@ -36,11 +36,14 @@ public class Passenger : MonoBehaviour
     public bool mustBeGreen = false;
     public bool mustBeNotGreen = false;
 
+    public Dialogue dialogue;
+
     public void Init(bool inOrder, bool illegal)
     {
         passengerName = nameGenerator.getRandName();
         passengerSurname = nameGenerator.getRandName();
         passengerAge = UnityEngine.Random.Range(15, 85);
+        dialogue.name = passengerName + " " + passengerSurname;
         int level = GameData.getCurrentLevel();
         setPermit();
         if (level > 0)
@@ -396,12 +399,11 @@ public static class nameGenerator
     {
         if (names==null)
         {
+            //Oula
             names = new string[18239+1];
-            string path = "Assets/Resources/names.txt";
-            StreamReader reader = new StreamReader(path);
-            string data = reader.ReadToEnd();
+            TextAsset text = Resources.Load<TextAsset>("names");
+            string data = text.ToString();
             names = data.Split(char.Parse("\n"));
-            reader.Close();
         }
         int i = UnityEngine.Random.Range(0, 18239);
         return names[i];

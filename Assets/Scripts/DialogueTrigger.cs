@@ -10,7 +10,7 @@ public class DialogueTrigger : MonoBehaviour
         player = GameObject.Find("Player");
     }
     private void Update() {
-        if(player.GetComponent<Interaction>().canInteract && Input.GetKeyDown(KeyCode.E))
+        if(player.GetComponent<Interaction>().canInteract() && Input.GetKeyDown(KeyCode.E))
         {
             TriggerDialogue();
         }

@@ -27,6 +27,11 @@ public class Interaction : MonoBehaviour
         isInteracting = false;
     }
 
+    public bool canInteract()
+    {
+        return closestPassenger != null;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,14 +40,11 @@ public class Interaction : MonoBehaviour
 
         if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(Interact());
+            Interact();
         }    
         else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
         {
-            passengerControls.gameObject.SetActive(false);
-            isInteracting = false;
-            dialogueManager.EndDialogue();
-
+            EndInteract();
         }
         //debug purpose only, the pause menu will be there
         else if ((Input.GetKeyDown(KeyCode.Escape)))
@@ -74,10 +76,7 @@ public class Interaction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (closestPassenger.Equals(collision.gameObject))
-        {
-            setClosestPassenger(null);
-        }
+        setClosestPassenger(null);
     }
 
     private void setClosestPassenger(GameObject passenger)
@@ -93,16 +92,21 @@ public class Interaction : MonoBehaviour
         }
     }
 
-    IEnumerator Interact()
+    void Interact()
     {
         isInteracting = true;
         animator.SetTrigger("Interact");
         Debug.Log("Test started");
+        dialogueManager.StartDialogue(closestPassenger.GetComponent<Passenger>().dialogue);
 
-        yield return new WaitForSeconds(1f);
-        
         passengerControls.Set(closestPassenger.GetComponent<Passenger>());
         passengerControls.gameObject.SetActive(true);
+    }
 
+    public void EndInteract()
+    {
+        passengerControls.gameObject.SetActive(false);
+        isInteracting = false;
+        dialogueManager.EndDialogue();
     }
 }

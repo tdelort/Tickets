@@ -201,6 +201,11 @@ MonoBehaviour:
   bulky: 0
   mustBeGreen: 0
   mustBeNotGreen: 0
+  dialogue:
+    name: Fill name
+    sentences:
+    - Bonjour !
+    - Il fait vachement beau aujourd'hui
 --- !u!61 &8452168450436133336
 BoxCollider2D:
   m_ObjectHideFlags: 0

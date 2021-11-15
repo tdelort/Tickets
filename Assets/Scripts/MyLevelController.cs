@@ -27,7 +27,7 @@ public class LevelController : MonoBehaviour
     private void spawnPassengers()
     {
         for (int i = 0; i < GameData.NbPassenger; i++){
-            GameObject passenger = Instantiate(passengerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject passenger = Instantiate(passengerPrefab, new Vector3(0, 0, 0.1f), Quaternion.identity);
         }
     }
 }

@@ -34,20 +34,20 @@ public class MyLevelController : MonoBehaviour
 
             if (nbNIOPass > 0)
             {
-                passenger.GetComponent<Passenger>().Init(false, true);
+                passenger.GetComponent<Passenger>().Init(false, false);
                 nbNIOPass--;
             }
             else if (nbIlePass > 0)
             {
-                passenger.GetComponent<Passenger>().Init(true, false);
+                passenger.GetComponent<Passenger>().Init(true, true);
                 nbIlePass--;
             }
             else
             {
-                passenger.GetComponent<Passenger>().Init(true, true);
+                passenger.GetComponent<Passenger>().Init(true, false);
             }
 
-                passenger.SetActive(true);
+            passenger.SetActive(true);
             passenger.transform.GetChild(0).gameObject.SetActive(false);
         }
     }

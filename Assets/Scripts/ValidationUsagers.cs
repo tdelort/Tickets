@@ -19,7 +19,7 @@ public class ValidationUsagers : MonoBehaviour
     {
         
     }
-
+//TODO: Mettre en argument le passager dont les papiers sont en train d'etre check lors du clic sur le bouton
     public void CheckUsagerWhenAmendeClicked(Passenger passenger){
         if(passenger.isInOrder){
             score -= 100;
@@ -29,6 +29,7 @@ public class ValidationUsagers : MonoBehaviour
         }
     }
 
+//TODO: Mettre en argument le passager dont les papiers sont en train d'etre check lors du clic sur le bouton
     public void CheckUsagerWhenEnRegleClicked(Passenger passenger){
         if(passenger.isInOrder){
             score += 100;

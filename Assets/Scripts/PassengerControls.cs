@@ -10,7 +10,9 @@ public class PassengerControls : MonoBehaviour
     public enum ControlObjectType
     {
         TICKET,
+        SUBSCRIPTION,
         PASSEPORT,
+        ID,
         RULELIST,
         FINEMACHINE
     }
@@ -80,8 +82,14 @@ public class PassengerControls : MonoBehaviour
                 case ControlObjectType.TICKET:
                     SetTicket(co.go, p.ticket);
                     break;
+                case ControlObjectType.SUBSCRIPTION:
+                    SetSubscription(co.go, p.subscription);
+                    break;
                 case ControlObjectType.PASSEPORT:
                     SetPasseport(co.go, p.passeport);
+                    break;
+                case ControlObjectType.ID:
+                    SetId(co.go, p.id);
                     break;
                 case ControlObjectType.RULELIST:
                     SetRuleList(co.go, new List<string>(){"Tickets are \n Mandatory", "No smoking", "No alcohol"});
@@ -110,6 +118,28 @@ public class PassengerControls : MonoBehaviour
         obj.GetComponentInChildren<TextMesh>().text = t.ToText();
     }
 
+    private void SetSubscription(GameObject obj, Passenger.Subscription s)
+    {
+        if (!s.present)
+        {
+            obj.SetActive(false);
+            return;
+        }
+
+        obj.SetActive(true);
+        obj.GetComponentInChildren<TextMesh>().text = s.ToText();
+    }
+    private void SetId(GameObject obj, Passenger.ID i)
+    {
+        if (!i.present)
+        {
+            obj.SetActive(false);
+            return;
+        }
+
+        obj.SetActive(true);
+        obj.GetComponentInChildren<TextMesh>().text = i.ToText();
+    }
     private void SetPasseport(GameObject obj, Passenger.Passeport p)
     {
         if(!p.present)

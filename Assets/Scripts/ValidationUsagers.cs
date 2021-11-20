@@ -22,9 +22,11 @@ public class ValidationUsagers : MonoBehaviour
 //TODO: Mettre en argument le passager dont les papiers sont en train d'etre check lors du clic sur le bouton
     public void CheckUsagerWhenAmendeClicked(Passenger passenger){
         if(passenger.isInOrder){
+            //On devra ajouter le code de ce que ça fait spécifiquement dans ce cas-là
             score -= 100;
         }
         else{
+            //On devra ajouter le code de ce que ça fait spécifiquement dans ce cas-là
             score += 100;
         }
     }
@@ -32,9 +34,11 @@ public class ValidationUsagers : MonoBehaviour
 //TODO: Mettre en argument le passager dont les papiers sont en train d'etre check lors du clic sur le bouton
     public void CheckUsagerWhenEnRegleClicked(Passenger passenger){
         if(passenger.isInOrder){
+            //On devra ajouter le code de ce que ça fait spécifiquement dans ce cas-là
             score += 100;
         }
         else{
+            //On devra ajouter le code de ce que ça fait spécifiquement dans ce cas-là
             score -= 100;
         }
     }

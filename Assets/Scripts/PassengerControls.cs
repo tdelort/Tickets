@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class PassengerControls : MonoBehaviour
         PASSEPORT,
         ID,
         RULELIST,
-        FINEMACHINE
+        FINEMACHINE,
+        WATCH
     }
 
     [System.Serializable]
@@ -32,15 +34,36 @@ public class PassengerControls : MonoBehaviour
     }
 
     [SerializeField] private List<ControlObject> controlObjects;
-    [SerializeField] private float originalZ = 0;
+    private GameObject watch;
+    private DateTime startTime;
+    private TimeSpan difference;
+   [SerializeField] private float originalZ = 0;
 
     RaycastHit2D hit;
 
     bool fine = false;
 
+    private void Start()
+    {
+        startTime = DateTime.Now;
+        foreach (ControlObject co in controlObjects)
+        { 
+            if (co.type == ControlObjectType.WATCH)
+            {
+                watch = co.go;
+            }
+        }
+    }
+
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        //update time on watch, can be optimized, I guess, but for now it is just fine
+        difference = DateTime.Now - startTime ;
+        DateTime processedTime = GameData.GameTime.AddSeconds(difference.TotalSeconds);
+        watch.GetComponentInChildren<TextMesh>().text = processedTime.ToString("G");
+
+        //check input
+        if (Input.GetMouseButtonDown(0))
         {
             hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if(hit.collider != null)

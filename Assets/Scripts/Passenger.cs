@@ -39,6 +39,54 @@ public class Passenger : MonoBehaviour
     public bool mustBeNotGreen = false;
 
     public Dialogue dialogue;
+    
+    private Vector2 startPosition;
+    private Vector2 endPosition;
+    private bool movingIn = false;
+    private bool movingOut = false;
+    private float elapsedTime;
+    private float percentageCompleted;
+    private float desiredDuration = 3f;
+    public void position( Vector2 start, Vector2 end)
+    {
+        elapsedTime = 0;
+        startPosition = start;
+        endPosition = end;
+        movingIn = true;
+    }
+    public void leave()
+    {
+        elapsedTime = 0;
+        movingOut = true;
+    }
+    private void Update() {
+        if(movingIn == true)
+        {
+            elapsedTime += Time.deltaTime;
+            percentageCompleted = elapsedTime / desiredDuration;
+            this.gameObject.transform.position = Vector3.Lerp(startPosition, endPosition, percentageCompleted);
+            if(percentageCompleted > 1)
+            {
+                movingIn = true;
+            }
+        }
+        if(movingOut == true)
+        {
+            elapsedTime += Time.deltaTime;
+            percentageCompleted = elapsedTime / desiredDuration;
+            this.gameObject.transform.position = Vector3.Lerp(endPosition, startPosition, percentageCompleted);
+            if(percentageCompleted > 1)
+            {
+                Debug.Log("try to destroy");
+                Destroy(this.gameObject);
+            }
+
+        }
+        
+
+        
+    }
+
 
     public void Init(bool inOrder, bool illegal)
     {
@@ -484,3 +532,4 @@ public static class nameGenerator
     }
 
 }
+

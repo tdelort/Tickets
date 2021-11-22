@@ -322,6 +322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2450922829713257208, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5503494569819118350, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -329,6 +333,10 @@ PrefabInstance:
     - target: {fileID: 5503494569819118351, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503494569967240144, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5503494570811462042, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
       propertyPath: m_IsTrigger
@@ -403,6 +411,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5503494571796586789, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389063703819317664, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -627,6 +639,10 @@ PrefabInstance:
     - target: {fileID: 634111716191716050, guid: fb99281eb38243043a0c8e02f5f69a07, type: 3}
       propertyPath: m_Name
       value: DialogueUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 634111716191716050, guid: fb99281eb38243043a0c8e02f5f69a07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 634111716191716055, guid: fb99281eb38243043a0c8e02f5f69a07, type: 3}
       propertyPath: m_Pivot.x

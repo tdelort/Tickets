@@ -82,6 +82,8 @@ public class MyLevelController : MonoBehaviour
             Debug.Log(numberOfPassengerComingIn + " passenger come in the train");
             isMoving = false;
             internalClock = 0;
+
+            FindObjectOfType<Interaction>().EndInteract();
         }
         //create passager while the train is stopped
         int nbNIOPass = GameData.NbNotInOrderPassenger;

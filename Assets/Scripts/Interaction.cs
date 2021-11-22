@@ -81,6 +81,10 @@ public class Interaction : MonoBehaviour
 
     private void setClosestPassenger(GameObject passenger)
     {
+        if(passenger != null && passenger.GetComponent<Passenger>() == null)
+        {
+            return;
+        }
         if (closestPassenger != null)
         {
             closestPassenger.transform.GetChild(0).gameObject.SetActive(false);
@@ -97,10 +101,11 @@ public class Interaction : MonoBehaviour
         isInteracting = true;
         animator.SetTrigger("Interact");
         Debug.Log("Test started");
-        dialogueManager.StartDialogue(closestPassenger.GetComponent<Passenger>().dialogue);
+        Passenger passenger = closestPassenger.GetComponent<Passenger>();
+        dialogueManager.StartDialogue(passenger.dialogue);
 
-        passengerControls.Set(closestPassenger.GetComponent<Passenger>());
         passengerControls.gameObject.SetActive(true);
+        passengerControls.Set(passenger);
     }
 
     public void EndInteract()

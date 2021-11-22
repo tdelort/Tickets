@@ -71,6 +71,11 @@ public class PassengerControls : MonoBehaviour
 
     public void Set(Passenger p)
     {
+        if(p == null)
+        {
+            Debug.LogError("Passenger is null");
+            return;
+        }
         originalZ = transform.position.z;
         passenger = p;
         foreach(ControlObject co in controlObjects)
@@ -112,6 +117,10 @@ public class PassengerControls : MonoBehaviour
 
     private void SetPasseport(GameObject obj, Passenger.Passeport p)
     {
+        Debug.Log("PASSEPORT");
+        Debug.Log(p.present);
+        Debug.Log(obj);
+        Debug.Log(p.ToText());
         if(!p.present)
         {
             obj.SetActive(false);

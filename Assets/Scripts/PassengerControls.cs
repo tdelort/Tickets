@@ -37,7 +37,9 @@ public class PassengerControls : MonoBehaviour
     private GameObject watch;
     private DateTime startTime;
     private TimeSpan difference;
-   [SerializeField] private float originalZ = 0;
+    [SerializeField] private float originalZ = 0;
+
+    private int score = 0;
 
     RaycastHit2D hit;
 
@@ -81,6 +83,9 @@ public class PassengerControls : MonoBehaviour
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
                     // Add acion to fine the passenger here
                     fine = false;
+                    Passenger p = GameObject.FindObjectOfType<Interaction>().closestPassenger;
+                    if(p != null)
+                        GameManager.CheckUsagerWhenAmendeClicked(p);
                     GameObject.FindObjectOfType<Interaction>().EndInteract();
                 }
 

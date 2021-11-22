@@ -45,16 +45,19 @@ public class MyLevelController : MonoBehaviour
         passenger.GetComponent<Passenger>().position(spawnPoint, endPosition);
         if (nbNIOPass > 0)
         {
+            Debug.Log("NOT IN ORDER");
             passenger.GetComponent<Passenger>().Init(false, false);
             nbNIOPass--;
         }
         else if (nbIlePass > 0)
         {
+            Debug.Log("ILEGAL");
             passenger.GetComponent<Passenger>().Init(true, true);
             nbIlePass--;
         }
         else
         {
+            Debug.Log("ORDER");
             passenger.GetComponent<Passenger>().Init(true, false);
         }
 
@@ -86,8 +89,8 @@ public class MyLevelController : MonoBehaviour
             FindObjectOfType<Interaction>().EndInteract();
         }
         //create passager while the train is stopped
-        int nbNIOPass = GameData.NbNotInOrderPassenger;
-        int nbIlePass = GameData.NbIlegalActionPassenger;
+        int nbNIOPass = (int)Random.Range(0, GameData.NbNotInOrderPassenger);
+        int nbIlePass = (int)Random.Range(0, GameData.NbIlegalActionPassenger);
         
         for(int i = 0;i < numberOfPassengerLeaving; i++)
         {

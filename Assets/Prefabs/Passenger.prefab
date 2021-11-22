@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 8544976337864010088}
   - component: {fileID: 3916011948513476627}
   - component: {fileID: 8452168450436133336}
+  - component: {fileID: 5856746015970988822}
   m_Layer: 0
   m_Name: Passenger
   m_TagString: passenger
@@ -124,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 8544976337864010089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 8544976338729437266}
   m_Father: {fileID: 0}
@@ -171,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -237487365671675732, guid: b9543e1f885f86a4a99876c3e3e645fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,6 +198,8 @@ MonoBehaviour:
   passengerName: 
   passengerSurname: 
   passengerAge: 0
+  isInOrder: 0
+  doIllegal: 0
   smoking: 0
   bulky: 0
   mustBeGreen: 0
@@ -206,6 +209,21 @@ MonoBehaviour:
     sentences:
     - Bonjour !
     - Il fait vachement beau aujourd'hui
+  spriteType: 0
+  idleClips:
+  - {fileID: 7400000, guid: 8f0259daead66b94d8cbfa05871555e5, type: 2}
+  - {fileID: 7400000, guid: 643df877650e8954e85b9cb6f0ae677a, type: 2}
+  - {fileID: 7400000, guid: 3a65934b95355f946ba19ee8dbf5e928, type: 2}
+  - {fileID: 7400000, guid: 7c0ef6d8a9f58074eb959662808d4a64, type: 2}
+  - {fileID: 7400000, guid: 430d4fcc16290424da551688e8853cee, type: 2}
+  - {fileID: 7400000, guid: 3e60947b6423fa14b9e1862b50a092e6, type: 2}
+  walkClips:
+  - {fileID: 7400000, guid: 5251567dc9dc7b145a5cacfb3a03b365, type: 2}
+  - {fileID: 7400000, guid: 6042c8c63e0f0ce4fb0e5cf8506af4e9, type: 2}
+  - {fileID: 7400000, guid: 8aedbcefa443c0740b479377f9d8b487, type: 2}
+  - {fileID: 7400000, guid: 0cd78f9ba06db9d458db416a93ece2da, type: 2}
+  - {fileID: 7400000, guid: 7bc06b0f459f6194f9b230fe25f81bc8, type: 2}
+  - {fileID: 7400000, guid: 9c205e3969a20874d9f141d9471e4f2d, type: 2}
 --- !u!61 &8452168450436133336
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,7 +240,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -232,6 +250,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &5856746015970988822
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544976337864010089}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 975e94f1f92e0f0489e7ab6b5a5d4eeb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8544976338729437267
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8544976338729437266
 Transform:
   m_ObjectHideFlags: 0
@@ -257,8 +294,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8544976338729437267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
   m_Children:
   - {fileID: 8544976337019680465}
   m_Father: {fileID: 8544976337864010095}

@@ -24,9 +24,9 @@ public static class GameData
     {
     currentLevel = level;
 
-    NbPassenger = 6;
-    NbNotInOrderPassenger = 2;
-    NbIlegalActionPassenger = 2;
+    NbPassenger = 8;
+    NbNotInOrderPassenger = 4;
+    NbIlegalActionPassenger = 4;
 
         switch (level)
         {

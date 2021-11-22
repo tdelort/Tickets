@@ -59,7 +59,35 @@ public class Passenger : MonoBehaviour
         elapsedTime = 0;
         movingOut = true;
     }
+
+    bool direction = true;
+
+    public int spriteType = 0;
+
+    [SerializeField] List<AnimationClip> idleClips;
+    [SerializeField] List<AnimationClip> walkClips;
+
+    private Animator animator;
+    private AnimatorOverrideController animatorOverrideController;
+
+    private void setSprite()
+    {
+        animator = GetComponent<Animator>();
+        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        animator.runtimeAnimatorController = animatorOverrideController;
+
+        int rand = UnityEngine.Random.Range(0, idleClips.Count);
+        spriteType = rand;
+
+        Debug.Log("Sprite type : " + spriteType);
+        Debug.Log("Sprite name : " + idleClips[spriteType].name);
+        Debug.Log("aoc : " + animatorOverrideController["Idle_bryb"]);
+        animatorOverrideController["Idle_bryb"] = idleClips[spriteType];
+        animatorOverrideController["walk_bryb"] = walkClips[spriteType];
+    }
+
     private void Update() {
+        direction = startPosition.x > endPosition.x;
         if(movingIn == true)
         {
             elapsedTime += Time.deltaTime;
@@ -82,8 +110,9 @@ public class Passenger : MonoBehaviour
             }
 
         }
-        
 
+        gameObject.GetComponent<Animator>().SetBool("isMoving", movingOut || percentageCompleted < 1);
+        gameObject.GetComponent<SpriteRenderer>().flipX = !(direction ^ !movingOut);
         
     }
 
@@ -95,6 +124,7 @@ public class Passenger : MonoBehaviour
         passengerAge = UnityEngine.Random.Range(15, 85);
         dialogue.name = passengerName + " " + passengerSurname;
         isInOrder = inOrder;
+        Debug.Log("Passenger in order : " + isInOrder);
         doIllegal = illegal;
         int level = GameData.getCurrentLevel();
         setPermit();
@@ -381,10 +411,6 @@ public class Passenger : MonoBehaviour
         return UnityEngine.Random.Range(0f, 1f);
     }
 
-    private void setSprite()
-    {
-        //TODO Fill this section
-    }
 
     public struct Ticket
     {

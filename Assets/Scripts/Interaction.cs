@@ -9,7 +9,7 @@ public class Interaction : MonoBehaviour
 {  
     public bool isInteracting;
 
-    private GameObject closestPassenger;
+    public Passenger closestPassenger;
 
     public DialogueManager dialogueManager;
 
@@ -59,7 +59,7 @@ public class Interaction : MonoBehaviour
     {
         if (closestPassenger == null)
         {
-            setClosestPassenger(collision.gameObject);
+            setClosestPassenger(collision.gameObject.GetComponent<Passenger>());
         }
         else if (closestPassenger != collision.gameObject)
         {
@@ -69,7 +69,7 @@ public class Interaction : MonoBehaviour
                 collision.transform.position);
             if (dist < distToBeat)
             {
-                setClosestPassenger(collision.gameObject);
+                setClosestPassenger(collision.gameObject.GetComponent<Passenger>());
             }
         }
     }
@@ -79,12 +79,8 @@ public class Interaction : MonoBehaviour
         setClosestPassenger(null);
     }
 
-    private void setClosestPassenger(GameObject passenger)
+    private void setClosestPassenger(Passenger passenger)
     {
-        if(passenger != null && passenger.GetComponent<Passenger>() == null)
-        {
-            return;
-        }
         if (closestPassenger != null)
         {
             closestPassenger.transform.GetChild(0).gameObject.SetActive(false);

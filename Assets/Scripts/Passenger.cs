@@ -187,7 +187,9 @@ public class Passenger : MonoBehaviour
         }
 
         setSprite();
-        debugInfo();
+
+        //will show the description of the passenger made
+        //debugInfo();
     }
     
     private void setPermit()
@@ -264,7 +266,9 @@ public class Passenger : MonoBehaviour
             else
             {
                 //make time false or name
-                if (coinFlip() < 0.5)
+                //if it is tutorial (no identification) don't make sub with false name
+                //TODO : this is a clumzy bugfix, to discuss
+                if (GameData.getCurrentLevel()==0 || coinFlip() < 0.5)
                 {
                     DateTime sexpiredTime = GameData.GameTime;
                     sexpiredTime = sexpiredTime.AddDays(-1f * UnityEngine.Random.Range(0f, subValidity));
@@ -502,8 +506,8 @@ public class Passenger : MonoBehaviour
 
     public void debugInfo()
     {
-        Debug.Log(dialogue.name + " ; " + isInOrder + " ; " +
-            doIllegal + " ; ");
+        Debug.Log(dialogue.name + " ; is in order : " + isInOrder +
+            " ;  do illegal action :" + doIllegal + " ; ");
         Debug.Log("ticket : " + ticket.present + " ; " + ticket.ToText());
         Debug.Log("subscription : " + subscription.present + " ; " +
             subscription.name + " ; " + subscription.surname + " ; " + 

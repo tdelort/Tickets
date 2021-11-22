@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,12 @@ public class PassengerControls : MonoBehaviour
     public enum ControlObjectType
     {
         TICKET,
+        SUBSCRIPTION,
         PASSEPORT,
+        ID,
         RULELIST,
-        FINEMACHINE
+        FINEMACHINE,
+        WATCH
     }
 
     [System.Serializable]
@@ -30,15 +34,36 @@ public class PassengerControls : MonoBehaviour
     }
 
     [SerializeField] private List<ControlObject> controlObjects;
-    [SerializeField] private float originalZ = 0;
+    private GameObject watch;
+    private DateTime startTime;
+    private TimeSpan difference;
+   [SerializeField] private float originalZ = 0;
 
     RaycastHit2D hit;
 
     bool fine = false;
 
+    private void Start()
+    {
+        startTime = DateTime.Now;
+        foreach (ControlObject co in controlObjects)
+        { 
+            if (co.type == ControlObjectType.WATCH)
+            {
+                watch = co.go;
+            }
+        }
+    }
+
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        //update time on watch, can be optimized, I guess, but for now it is just fine
+        difference = DateTime.Now - startTime ;
+        DateTime processedTime = GameData.GameTime.AddSeconds(difference.TotalSeconds);
+        watch.GetComponentInChildren<TextMesh>().text = processedTime.ToString("G");
+
+        //check input
+        if (Input.GetMouseButtonDown(0))
         {
             hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if(hit.collider != null)
@@ -85,8 +110,14 @@ public class PassengerControls : MonoBehaviour
                 case ControlObjectType.TICKET:
                     SetTicket(co.go, p.ticket);
                     break;
+                case ControlObjectType.SUBSCRIPTION:
+                    SetSubscription(co.go, p.subscription);
+                    break;
                 case ControlObjectType.PASSEPORT:
                     SetPasseport(co.go, p.passeport);
+                    break;
+                case ControlObjectType.ID:
+                    SetId(co.go, p.id);
                     break;
                 case ControlObjectType.RULELIST:
                     SetRuleList(co.go, new List<string>(){"Tickets are \n Mandatory", "No smoking", "No alcohol"});
@@ -115,6 +146,28 @@ public class PassengerControls : MonoBehaviour
         obj.GetComponentInChildren<TextMesh>().text = t.ToText();
     }
 
+    private void SetSubscription(GameObject obj, Passenger.Subscription s)
+    {
+        if (!s.present)
+        {
+            obj.SetActive(false);
+            return;
+        }
+
+        obj.SetActive(true);
+        obj.GetComponentInChildren<TextMesh>().text = s.ToText();
+    }
+    private void SetId(GameObject obj, Passenger.ID i)
+    {
+        if (!i.present)
+        {
+            obj.SetActive(false);
+            return;
+        }
+
+        obj.SetActive(true);
+        obj.GetComponentInChildren<TextMesh>().text = i.ToText();
+    }
     private void SetPasseport(GameObject obj, Passenger.Passeport p)
     {
         Debug.Log("PASSEPORT");

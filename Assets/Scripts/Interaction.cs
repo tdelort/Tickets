@@ -54,7 +54,7 @@ public class Interaction : MonoBehaviour
 
 
     }
-    //This can be optimisable, but for now it works just fine
+    //This can be optimized, but for now it works just fine
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (closestPassenger == null)

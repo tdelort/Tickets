@@ -8,6 +8,7 @@ public class PassengerControls : MonoBehaviour
 {
     Passenger passenger;
 
+    public DialogueManager dialogueManager;
     public enum ControlObjectType
     {
         TICKET,
@@ -75,6 +76,8 @@ public class PassengerControls : MonoBehaviour
                     Debug.Log("Hit fine button");
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.FINE_SELECTED);
                     fine = true;
+                    passenger.dialogue.SetDialogue(passenger.pleadType);
+                    dialogueManager.StartDialogue(passenger.dialogue);
                 }
                 
                 if(fine && hit.collider.gameObject.CompareTag("ValidateButton"))

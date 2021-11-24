@@ -25,9 +25,9 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
         sentences.Clear();
 
-        foreach(string sentence in dialogue.sentences)
+        foreach(Sentence sentence in dialogue.sentences)
         {
-            sentences.Enqueue(sentence);
+            sentences.Enqueue(sentence.text);
         }
         displayNextSentence();
     }

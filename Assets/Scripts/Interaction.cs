@@ -96,7 +96,6 @@ public class Interaction : MonoBehaviour
     {
         isInteracting = true;
         animator.SetTrigger("Interact");
-        Debug.Log("Test started");
         Passenger passenger = closestPassenger.GetComponent<Passenger>();
         dialogueManager.StartDialogue(passenger.dialogue);
 

@@ -76,7 +76,7 @@ public class PassengerControls : MonoBehaviour
                     Debug.Log("Hit fine button");
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.FINE_SELECTED);
                     fine = true;
-                    passenger.dialogue.SetDialogue(passenger.pleadType);
+                    passenger.dialogue.SetDialogue(Sentence.SentenceType.PLEAD);
                     dialogueManager.StartDialogue(passenger.dialogue);
                 }
                 
@@ -86,10 +86,9 @@ public class PassengerControls : MonoBehaviour
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
                     // Add acion to fine the passenger here
                     fine = false;
-                    Passenger p = GameObject.FindObjectOfType<Interaction>().closestPassenger;
-                    if(p != null)
-                        GameManager.CheckUsagerWhenAmendeClicked(p);
+                    GameManager.CheckUsagerWhenAmendeClicked(passenger);
                     GameObject.FindObjectOfType<Interaction>().EndInteract();
+                    dialogueManager.StartDialogue(passenger.dialogue);
                 }
 
                 if(fine && hit.collider.gameObject.CompareTag("CancelButton"))

@@ -17,8 +17,16 @@
             "type": 0
         },
         {
-            "text": "S'il vous plaît, c'est la première fois..",
+            "text": "Vous allez vraiment me verbaliser ?",
             "type": 1
+        },
+        {
+            "text": "C'était mérité...",
+            "type": 2
+        },
+        {
+            "text": "Pas cool...",
+            "type": 3
         }
        ]
 }

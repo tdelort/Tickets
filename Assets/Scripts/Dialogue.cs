@@ -23,15 +23,11 @@ public class Sentence
 {
     public enum SentenceType
     {
-        GREETING,           //0
-        TRUEPLEAD,          //1
-        NOPERMITPLEAD,      //2
-        NOIDPLEAD,          //3
-        NOATTESTATIONPLEAD, //4
-        FALSETICKETPLEAD,   //5
-        FALSESUBPLEAD,      //6
-        FALSEIDPLEAD,       //7
-        FALSEATTESTATION    //8
+        GREETING,   //0
+        PLEAD,      //1
+        GOODFINE,   //2
+        BADFINE,    //3
+
     }
 
     public SentenceType type;

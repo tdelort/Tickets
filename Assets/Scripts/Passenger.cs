@@ -39,7 +39,6 @@ public class Passenger : MonoBehaviour
     public bool mustBeNotGreen = false;
 
     public Dialogue dialogue;
-    public Sentence.SentenceType pleadType = Sentence.SentenceType.TRUEPLEAD;
     
     private Vector2 startPosition;
     private Vector2 endPosition;

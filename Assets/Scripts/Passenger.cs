@@ -7,7 +7,7 @@ using System;
 public class Passenger : MonoBehaviour
 {
     double ticketProb = 0.5;
-    double PassportProb = 1;
+    double PassportProb = 0.5;
 
     //hour
     float ticketValidity = 1f;

@@ -83,9 +83,9 @@ public class PassengerControls : MonoBehaviour
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
                     // Add acion to fine the passenger here
                     fine = false;
-                    Passenger p = GameObject.FindObjectOfType<Interaction>().closestPassenger;
-                    if(p != null)
-                        GameManager.CheckUsagerWhenAmendeClicked(p);
+                    
+                    if(passenger != null)
+                        GameManager.CheckUsagerWhenAmendeClicked(passenger);
                     GameObject.FindObjectOfType<Interaction>().EndInteract();
                 }
 

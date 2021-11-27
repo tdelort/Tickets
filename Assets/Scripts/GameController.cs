@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     {
         GameData.setCurrentLevel(level);
         SceneManager.LoadScene("Level");
+        GameData.NbPassenger = 10;
     }
 }
 

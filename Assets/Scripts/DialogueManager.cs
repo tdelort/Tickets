@@ -33,14 +33,20 @@ public class DialogueManager : MonoBehaviour
     }
     public void displayNextSentence()
     {
-        if (sentences.Count == 0)
+        //if dialog tab is open
+        if (animator.GetBool("IsOpen"))
         {
-            EndDialogue();
-            return;
+            if (sentences.Count > 0)
+            {
+                string sentence = sentences.Dequeue();
+                StopAllCoroutines();
+                StartCoroutine(TypeSentence(sentence));
+            }
+            else
+            {
+                EndDialogue();
+            }
         }
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
     }
 
     IEnumerator TypeSentence(string sentence)

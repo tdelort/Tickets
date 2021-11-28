@@ -47,6 +47,11 @@ public class Interaction : MonoBehaviour
             EndInteract();
         }
         //debug purpose only, the pause menu will be there
+        else if ((Input.GetKeyDown(KeyCode.Space)))
+        {
+            dialogueManager.displayNextSentence();
+        }
+        //debug purpose only, the pause menu will be there
         else if ((Input.GetKeyDown(KeyCode.Escape)))
         {
             SceneManager.LoadScene("LevelSelection");

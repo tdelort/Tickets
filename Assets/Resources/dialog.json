@@ -13,10 +13,6 @@
             "type": 0
         },
         {
-            "text": "Bonjour...",
-            "type": 0
-        },
-        {
             "text": "Vous allez vraiment me verbaliser ?",
             "type": 1
         },
@@ -27,6 +23,174 @@
         {
             "text": "Pas cool...",
             "type": 3
+        },
+        {
+            "text": "Mhhh?",
+            "type": 0
+        },
+        {
+            "text": "Ah mince ! Donnez moi juste le temps de récupérer mon ticket ! ",
+            "type": 0
+        },
+        {
+            "text": "Vous êtes vraiment un agent ? ",
+            "type": 0
+        },
+        {
+            "text": "Do you speek English? ",
+            "type": 0
+        },
+        {
+            "text": "Oui ? Tout de suite ! ",
+            "type": 0
+        },
+        {
+            "text": "Zut, je l'ai rangé où déjà ? ",
+            "type": 0
+        },
+        {
+            "text": "Gasp! ",
+            "type": 1
+        },
+        {
+            "text": "Non, s'il-vous-plaît ! ",
+            "type": 1
+        },
+        {
+            "text": "Et ben encore des pâtes jusqu'à la fin du mois",
+            "type": 1
+        },
+        {
+            "text": "C'est dangereux de faire ce que tu vas faire ! Je te conseille pas ! ",
+            "type": 1
+        },
+        {
+            "text": "Si je te donne mon numéro, tu ne me fais rien payer et je te fais rien payer mon chou ",
+            "type": 1
+        },
+        {
+            "text": "Je vais te contacter pour coller un pain si tu fais ça ! ",
+            "type": 1
+        },
+        {
+            "text": "Tu passes ton chemin et ce billet va dans ta poche. ",
+            "type": 1
+        },
+        {
+            "text": "Pourtant j'étais sûr d'être en règle.. ",
+            "type": 1
+        },
+        {
+            "text": "Mais c'était la première fois ! ",
+            "type": 2
+        },
+        {
+            "text": "Vous êtes vraiment tous les mêmes ! ",
+            "type": 2
+        },
+        {
+            "text": "Et une de plus... ",
+            "type": 2
+        },
+        {
+            "text": "Mais j'avais tout en rentrant, ou c'est passé ! ",
+            "type": 2
+        },
+        {
+            "text": "Un peu d'indulgence s'il vous plaît, je viens de me faire voler par un pickpocket ! ",
+            "type": 1
+        },
+        {
+            "text": "Vous avez pas le droit de me faire ca ! ",
+            "type": 3
+        },
+        {
+            "text": "C'est du vol ! ",
+            "type": 3
+        },
+        {
+            "text": "Je vais me plaindre de ce pas ! ",
+            "type": 3
+        },
+        {
+            "text": "Donnez moi votre matricule ! ",
+            "type": 1
+        },
+        {
+            "text": "C'est une honte ! ",
+            "type": 3
+        },
+        {
+            "text": "Mais.. Pourquoi ?!? ",
+            "type": 3
+        },
+        {
+            "text": "C'est le jeu..  J'ai perdu ",
+            "type": 2
+        },
+        {
+            "text": "J'ai joué et j'ai perdu...",
+            "type": 2
+        },
+        {
+            "text": "Vous n'avez aucune Dignité ! ",
+            "type": 3
+        },
+        {
+            "text": "Vous me dégoutez",
+            "type": 3
+        },
+        {
+            "text": "Je suis en règle ! Je vous assure ! ",
+            "type": 3
+        },
+        {
+            "text": "Grmbl",
+            "type": 3
+        },
+        {
+            "text": "Grmbl",
+            "type": 2
+        },
+        {
+            "text": "Ça va mal se passer pour vous..",
+            "type": 2
+        },
+        {
+            "text": "C'est loin d'être fini ! ",
+            "type": 3
+        },
+        {
+            "text": "Vous n'avez vraiment aucune pitié ! ",
+            "type": 1
+        },
+        {
+            "text": "Je vous aurez un jour...",
+            "type": 2
+        },
+        {
+            "text": "Tu sais pas qui je suis !",
+            "type": 3
+        },
+        {
+            "text": "Tu sais pas qui je suis !",
+            "type": 2
+        },
+        {
+            "text": "Un instant s'il-vous-plaît...",
+            "type": 0
+        },
+        {
+            "text": "C'est à cause de gens comme vous que notre pays va mal !",
+            "type": 3
+        },
+        {
+            "text": "Envoyez moi l'amende par courriel svp",
+            "type": 2
+        },
+        {
+            "text": "N'y aurait-il pas moyen de s'arranger ?",
+            "type": 2
         }
-       ]
+        ]
 }

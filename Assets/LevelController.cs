@@ -11,7 +11,7 @@ public class MyLevelController : MonoBehaviour
     private int actualNumberOfPassenger = 0;
     public GameObject passengerPrefab;
     
-
+    [SerializeField] private Interaction interaction;
     // Metro doors position
     public Transform[] spawnPoints;
 
@@ -22,6 +22,9 @@ public class MyLevelController : MonoBehaviour
     private List<Vector2> startPositions = new List<Vector2>();
     private List<Vector2> endPositions = new List<Vector2>();
 
+    [SerializeField] GameObject propartiPrefab;
+    [SerializeField] GameObject migrantPrefab;
+    [SerializeField] GameObject resistantePrefab;
     
 
     float elapsedTime = 0;
@@ -35,6 +38,19 @@ public class MyLevelController : MonoBehaviour
         numberOfPassengerComingIn = (int)Random.Range(3,numberOfPassenger - actualNumberOfPassenger);
         Debug.Log(numberOfPassengerComingIn + " passenger come in the train");
 
+        // For now the special passengers will spawn in the start
+        SpecialPassenger sp;
+        switch (GameData.getCurrentLevel())
+        {
+            case 2:
+                sp = Instantiate(migrantPrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
+                sp.Init(SpecialPassengerType.MIGRANT);
+                break;
+            default:
+                Debug.LogError("No special passenger for this level");
+                break;
+        }
+
     }
     private void createPassenger(int nbNIOPass, int nbIlePass)
     {
@@ -45,19 +61,19 @@ public class MyLevelController : MonoBehaviour
         passenger.GetComponent<Passenger>().position(spawnPoint, endPosition);
         if (nbNIOPass > 0)
         {
-            Debug.Log("NOT IN ORDER");
+            //Debug.Log("NOT IN ORDER");
             passenger.GetComponent<Passenger>().Init(false, false);
             nbNIOPass--;
         }
         else if (nbIlePass > 0)
         {
-            Debug.Log("ILEGAL");
+            //Debug.Log("ILEGAL");
             passenger.GetComponent<Passenger>().Init(true, true);
             nbIlePass--;
         }
         else
         {
-            Debug.Log("ORDER");
+            //Debug.Log("ORDER");
             passenger.GetComponent<Passenger>().Init(true, false);
         }
 
@@ -70,7 +86,9 @@ public class MyLevelController : MonoBehaviour
     {
         
         //to manage if train is running or not
-        internalClock += Time.deltaTime;
+        if(!interaction.isInteracting)
+            internalClock += Time.deltaTime;
+
         if (internalClock > 6 && isMoving == false)
         {
             isMoving = true;
@@ -79,10 +97,10 @@ public class MyLevelController : MonoBehaviour
         if (internalClock > 15 && isMoving == true)
         {
             numberOfPassengerLeaving = (int)Random.Range(0,actualNumberOfPassenger);
-            Debug.Log(numberOfPassengerLeaving + " passenger have left the train");
+            //Debug.Log(numberOfPassengerLeaving + " passenger have left the train");
             actualNumberOfPassenger -= numberOfPassengerLeaving;
             numberOfPassengerComingIn = (int)Random.Range(0,numberOfPassenger - actualNumberOfPassenger);
-            Debug.Log(numberOfPassengerComingIn + " passenger come in the train");
+            //Debug.Log(numberOfPassengerComingIn + " passenger come in the train");
             isMoving = false;
             internalClock = 0;
 

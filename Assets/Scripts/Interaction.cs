@@ -97,10 +97,19 @@ public class Interaction : MonoBehaviour
         isInteracting = true;
         animator.SetTrigger("Interact");
         Passenger passenger = closestPassenger.GetComponent<Passenger>();
-        dialogueManager.StartDialogue(passenger.dialogue);
-
-        passengerControls.gameObject.SetActive(true);
-        passengerControls.Set(passenger);
+        if(!passenger.isSpecial())
+        {
+            dialogueManager.StartDialogue(passenger.dialogue);
+            passengerControls.gameObject.SetActive(true);
+            passengerControls.Set(passenger);
+        }
+        else
+        {
+            //cast passenger to special passenger
+            SpecialPassenger spassenger = passenger as SpecialPassenger;
+            spassenger.canMove = false;
+            dialogueManager.StartSpecialDialogue(spassenger.dialogue);
+        }
     }
 
     public void EndInteract()

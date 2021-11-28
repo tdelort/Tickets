@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {    public void startLevel(int level)
     {
         GameData.setCurrentLevel(level);
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("TristanLevel");
     }
 }
 

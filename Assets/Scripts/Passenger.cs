@@ -70,7 +70,7 @@ public class Passenger : MonoBehaviour
     private Animator animator;
     private AnimatorOverrideController animatorOverrideController;
 
-    private void setSprite()
+    protected void setSprite()
     {
         animator = GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
@@ -121,7 +121,7 @@ public class Passenger : MonoBehaviour
         passengerAge = UnityEngine.Random.Range(15, 85);
         dialogue.name = passengerName + " " + passengerSurname;
         isInOrder = inOrder;
-        Debug.Log("Passenger in order : " + isInOrder);
+        //Debug.Log("Passenger in order : " + isInOrder);
         doIllegal = illegal;
         int level = GameData.getCurrentLevel();
         setPermit();
@@ -516,6 +516,11 @@ public class Passenger : MonoBehaviour
         Debug.Log("Sprite name : " + idleClips[spriteType].name);
         Debug.Log("aoc : " + animatorOverrideController["Idle_bryb"]);
         Debug.Log("---------    end     ------------");
+    }
+
+    virtual public bool isSpecial()
+    {
+        return false;
     }
 }
 

@@ -36,12 +36,12 @@
             "answers" :
             [
                 {
-                    "text": "ANSWER 1",
+                    "text": "Ce n'est pas mon problème",
                     "next": -2
                 },
                 {
-                    "text": "ANSWER 2",
-                    "next": 0
+                    "text": "Que se passe-t-il ?",
+                    "next": 1
                 }
             ]
         }

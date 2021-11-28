@@ -177,10 +177,6 @@ public class PassengerControls : MonoBehaviour
     }
     private void SetPasseport(GameObject obj, Passenger.Passeport p)
     {
-        Debug.Log("PASSEPORT");
-        Debug.Log(p.present);
-        Debug.Log(obj);
-        Debug.Log(p.ToText());
         if(!p.present)
         {
             obj.SetActive(false);

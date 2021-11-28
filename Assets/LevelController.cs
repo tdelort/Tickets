@@ -47,7 +47,7 @@ public class MyLevelController : MonoBehaviour
                 sp.Init(SpecialPassengerType.MIGRANT);
                 break;
             default:
-                Debug.LogError("No special passenger for this level");
+                Debug.Log("No special passenger for this level YET");
                 break;
         }
 

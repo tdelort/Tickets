@@ -72,10 +72,10 @@ public class SpecialDialogue
         foreach(Entry entry in entryList.entries)
         {
             dialogue.Add(entry.id, entry);
-            Debug.LogWarning("### Init special dialogue : " + entry.id + " " + entry.text);
+            //Debug.LogWarning("### Init special dialogue : " + entry.id + " " + entry.text);
             foreach(Answer answer in entry.answers)
             {
-                Debug.LogWarning(" ---> Init special dialogue : " + answer.text + " " + answer.next);
+                //Debug.LogWarning(" ---> Init special dialogue : " + answer.text + " " + answer.next);
             }
         }
     }

@@ -36,27 +36,35 @@ public class Interaction : MonoBehaviour
     void Update()
     {
 
-        //Clic pour intéragir
-
-        if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E))
+        if(isInteracting)
         {
-            Interact();
-        }    
-        else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
-        {
-            EndInteract();
+            if(Input.GetButtonDown("Interact") || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
+            {
+                Debug.Log("Leave Interact");
+                EndInteract();
+                isInteracting = false;
+            }
+            //debug purpose only, the pause menu will be there
+            else if (Input.GetButtonDown("Pause Menu"))
+            {
+                Debug.Log("Pause");
+                SceneManager.LoadScene("LevelSelection");
+            }
         }
-        //debug purpose only, the pause menu will be there
-        else if ((Input.GetKeyDown(KeyCode.Space)))
+        else
         {
-            dialogueManager.displayNextSentence();
+            if(closestPassenger!=null && Input.GetButtonDown("Interact"))
+            {
+                Debug.Log("Interact");
+                isInteracting = true;
+                Interact();
+            }    
+            else if (Input.GetButtonDown("Next Sentence"))
+            {
+                Debug.Log("Next Sentence");
+                dialogueManager.displayNextSentence();
+            }
         }
-        //debug purpose only, the pause menu will be there
-        else if ((Input.GetKeyDown(KeyCode.Escape)))
-        {
-            SceneManager.LoadScene("LevelSelection");
-        }
-
 
     }
     //This can be optimized, but for now it works just fine
@@ -99,7 +107,6 @@ public class Interaction : MonoBehaviour
 
     void Interact()
     {
-        isInteracting = true;
         animator.SetTrigger("Interact");
         Passenger passenger = closestPassenger.GetComponent<Passenger>();
         if(!passenger.isSpecial())
@@ -119,8 +126,8 @@ public class Interaction : MonoBehaviour
 
     public void EndInteract()
     {
+        Debug.Log("Ending interaction");
         passengerControls.gameObject.SetActive(false);
-        isInteracting = false;
         dialogueManager.EndDialogue();
     }
 }

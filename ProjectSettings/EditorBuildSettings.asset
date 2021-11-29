@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LevelSelection.unity
-    guid: e1e5a92ae4965e44ea1127e10d1b1dd9
+    path: Assets/Scenes/MainMenu.unity
+    guid: fde5c88a0e166784e8218e425812e9d4
   - enabled: 1
-    path: Assets/Scenes/Level.unity
-    guid: b011537ed1cf83b4682a973232545823
+    path: Assets/Scenes/TristanLevel.unity
+    guid: b15ddfc7da1de6246a6e401dc6b720c3
+  - enabled: 1
+    path: Assets/Scenes/BetweenLevels.unity
+    guid: 744315e64f908f943bbccfea2cb2acee
   m_configObjects: {}

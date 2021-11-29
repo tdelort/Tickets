@@ -70,7 +70,7 @@ public class Passenger : MonoBehaviour
     private Animator animator;
     private AnimatorOverrideController animatorOverrideController;
 
-    private void setSprite()
+    protected void setSprite()
     {
         animator = GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
@@ -79,9 +79,6 @@ public class Passenger : MonoBehaviour
         int rand = UnityEngine.Random.Range(0, idleClips.Count);
         spriteType = rand;
 
-        Debug.Log("Sprite type : " + spriteType);
-        Debug.Log("Sprite name : " + idleClips[spriteType].name);
-        Debug.Log("aoc : " + animatorOverrideController["Idle_bryb"]);
         animatorOverrideController["Idle_bryb"] = idleClips[spriteType];
         animatorOverrideController["walk_bryb"] = walkClips[spriteType];
     }
@@ -124,9 +121,9 @@ public class Passenger : MonoBehaviour
         passengerAge = UnityEngine.Random.Range(15, 85);
         dialogue.name = passengerName + " " + passengerSurname;
         isInOrder = inOrder;
-        Debug.Log("Passenger in order : " + isInOrder);
+        //Debug.Log("Passenger in order : " + isInOrder);
         doIllegal = illegal;
-        int level = GameData.getCurrentLevel();
+        int level = GameManager.getCurrentLevel();
         setPermit();
         if (level > 0)
         {
@@ -217,7 +214,7 @@ public class Passenger : MonoBehaviour
         }
 
         setSprite();
-
+        dialogue.SetDialogue(Sentence.SentenceType.GREETING);
         //will show the description of the passenger made
         //debugInfo();
     }
@@ -225,11 +222,11 @@ public class Passenger : MonoBehaviour
     private void setPermit()
     {
         
-        DateTime texpiredTime = GameData.GameTime;
+        DateTime texpiredTime = GameManager.GameTime;
         texpiredTime = texpiredTime.AddHours(UnityEngine.Random.Range(0f, ticketValidity));
 
         
-        DateTime sexpiredTime = GameData.GameTime;
+        DateTime sexpiredTime = GameManager.GameTime;
         sexpiredTime = sexpiredTime.AddDays(UnityEngine.Random.Range(0f, subValidity));
 
         double rand = coinFlip();
@@ -248,11 +245,11 @@ public class Passenger : MonoBehaviour
     }
     private void setId()
     {
-        DateTime pexpiredTime = GameData.GameTime;
+        DateTime pexpiredTime = GameManager.GameTime;
         pexpiredTime = pexpiredTime.AddYears(Mathf.RoundToInt(UnityEngine.Random.Range(0f, passValidity-1f)));
         pexpiredTime = pexpiredTime.AddDays(UnityEngine.Random.Range(0f, 365f));
 
-        DateTime iexpiredTime = GameData.GameTime;
+        DateTime iexpiredTime = GameManager.GameTime;
         iexpiredTime = iexpiredTime.AddYears(Mathf.RoundToInt(UnityEngine.Random.Range(0f, idValidity-1f)));
         iexpiredTime = iexpiredTime.AddDays(UnityEngine.Random.Range(0f, 365f));
 
@@ -274,7 +271,7 @@ public class Passenger : MonoBehaviour
     }
     private void setAutorisation()
     {
-        DateTime autExpiredTime = GameData.GameTime;
+        DateTime autExpiredTime = GameManager.GameTime;
         autExpiredTime = autExpiredTime.AddHours(UnityEngine.Random.Range(0f, autValidity));
 
         autorisation = new Autorisation(true, passengerName,
@@ -288,7 +285,7 @@ public class Passenger : MonoBehaviour
         {
             if (ticket.present)
             {
-                DateTime texpiredTime = GameData.GameTime;
+                DateTime texpiredTime = GameManager.GameTime;
                 texpiredTime = texpiredTime.AddHours(-1f*UnityEngine.Random.Range(0f, ticketValidity));
 
                 ticket.expiredTime = texpiredTime;
@@ -298,9 +295,9 @@ public class Passenger : MonoBehaviour
                 //make time false or name
                 //if it is tutorial (no identification) don't make sub with false name
                 //TODO : this is a clumzy bugfix, to discuss
-                if (GameData.getCurrentLevel()==0 || coinFlip() < 0.5)
+                if (GameManager.getCurrentLevel()==0 || coinFlip() < 0.5)
                 {
-                    DateTime sexpiredTime = GameData.GameTime;
+                    DateTime sexpiredTime = GameManager.GameTime;
                     sexpiredTime = sexpiredTime.AddDays(-1f * UnityEngine.Random.Range(0f, subValidity));
 
                     subscription.expiredTime = sexpiredTime;
@@ -328,47 +325,23 @@ public class Passenger : MonoBehaviour
         {
             if (passeport.present)
             {
-                //make time false or name
-                if (coinFlip() < 0.5)
-                {
-                    DateTime pexpiredTime = GameData.GameTime;
-                    pexpiredTime = pexpiredTime.AddYears(Mathf.RoundToInt(-1f * 
-                        UnityEngine.Random.Range(0f, passValidity-1f)));
-                    pexpiredTime = pexpiredTime.AddDays(-1f *
-                        UnityEngine.Random.Range(0f, 365f));
+                DateTime pexpiredTime = GameManager.GameTime;
+                pexpiredTime = pexpiredTime.AddYears(Mathf.RoundToInt(-1f * 
+                    UnityEngine.Random.Range(0f, passValidity-1f)));
+                pexpiredTime = pexpiredTime.AddDays(-1f *
+                    UnityEngine.Random.Range(0f, 365f));
 
-                    passeport.expiredTime = pexpiredTime;
-                }
-                else
-                {
-                    passeport.name = nameGenerator.getRandName();
-                    if (coinFlip() < 0.5)
-                    {
-                        passeport.surname = nameGenerator.getRandName();
-                    }
-                }
+                passeport.expiredTime = pexpiredTime;
             }
             else
             {
-                //make time false or name
-                if (coinFlip() < 0.5)
-                {
-                    DateTime iexpiredTime = GameData.GameTime;
-                    iexpiredTime = iexpiredTime.AddYears(Mathf.RoundToInt(-1f *
-                        UnityEngine.Random.Range(0f, idValidity-1f)));
-                    iexpiredTime = iexpiredTime.AddDays(-1f *
-                        UnityEngine.Random.Range(0f, 365f));
+                DateTime iexpiredTime = GameManager.GameTime;
+                iexpiredTime = iexpiredTime.AddYears(Mathf.RoundToInt(-1f *
+                    UnityEngine.Random.Range(0f, idValidity-1f)));
+                iexpiredTime = iexpiredTime.AddDays(-1f *
+                    UnityEngine.Random.Range(0f, 365f));
 
-                    id.expiredTime = iexpiredTime;
-                }
-                else
-                {
-                    id.name = nameGenerator.getRandName();
-                    if (coinFlip() < 0.5)
-                    {
-                        id.surname = nameGenerator.getRandName();
-                    }
-                }
+                id.expiredTime = iexpiredTime;
             }
         }
         else
@@ -386,7 +359,7 @@ public class Passenger : MonoBehaviour
             
             if (coinFlip() < 0.5)
             {
-                DateTime autExpiredTime = GameData.GameTime;
+                DateTime autExpiredTime = GameManager.GameTime;
                 autExpiredTime = autExpiredTime.AddHours(-1 * UnityEngine.Random.Range(0f, autValidity));
 
                 autorisation.expiredTime = autExpiredTime;
@@ -532,15 +505,24 @@ public class Passenger : MonoBehaviour
 
     public void debugInfo()
     {
+        Debug.Log("---------Passenger debug log------------");
         Debug.Log(dialogue.name + " ; is in order : " + isInOrder +
             " ;  do illegal action :" + doIllegal + " ; ");
         Debug.Log("ticket : " + ticket.present + " ; " + ticket.ToText());
         Debug.Log("subscription : " + subscription.present + " ; " +
             subscription.name + " ; " + subscription.surname + " ; " + 
             subscription.ToText());
+        Debug.Log("Sprite type : " + spriteType);
+        Debug.Log("Sprite name : " + idleClips[spriteType].name);
+        Debug.Log("aoc : " + animatorOverrideController["Idle_bryb"]);
+        Debug.Log("---------    end     ------------");
+    }
+
+    virtual public bool isSpecial()
+    {
+        return false;
     }
 }
-
 
 
 public static class nameGenerator
@@ -557,7 +539,7 @@ public static class nameGenerator
             string data = text.ToString();
             names = data.Split(char.Parse("\n"));
         }
-        int i = UnityEngine.Random.Range(0, 18239);
+        int i = UnityEngine.Random.Range(0, names.Length);
         return names[i];
     }
 

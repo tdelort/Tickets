@@ -206,9 +206,7 @@ MonoBehaviour:
   mustBeNotGreen: 0
   dialogue:
     name: Fill name
-    sentences:
-    - Bonjour !
-    - Il fait vachement beau aujourd'hui
+    sentences: []
   spriteType: 0
   idleClips:
   - {fileID: 7400000, guid: 8f0259daead66b94d8cbfa05871555e5, type: 2}

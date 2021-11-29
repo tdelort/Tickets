@@ -36,22 +36,35 @@ public class Interaction : MonoBehaviour
     void Update()
     {
 
-        //Clic pour intéragir
-
-        if(closestPassenger!=null && Input.GetKeyDown(KeyCode.E))
+        if(isInteracting)
         {
-            Interact();
-        }    
-        else if(isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
-        {
-            EndInteract();
+            if(Input.GetButtonDown("Interact") || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
+            {
+                Debug.Log("Leave Interact");
+                EndInteract();
+                isInteracting = false;
+            }
+            //debug purpose only, the pause menu will be there
+            else if (Input.GetButtonDown("Pause Menu"))
+            {
+                Debug.Log("Pause");
+                SceneManager.LoadScene("LevelSelection");
+            }
         }
-        //debug purpose only, the pause menu will be there
-        else if ((Input.GetKeyDown(KeyCode.Escape)))
+        else
         {
-            SceneManager.LoadScene("LevelSelection");
+            if(closestPassenger!=null && Input.GetButtonDown("Interact"))
+            {
+                Debug.Log("Interact");
+                isInteracting = true;
+                Interact();
+            }    
+            else if (Input.GetButtonDown("Next Sentence"))
+            {
+                Debug.Log("Next Sentence");
+                dialogueManager.displayNextSentence();
+            }
         }
-
 
     }
     //This can be optimized, but for now it works just fine
@@ -94,20 +107,27 @@ public class Interaction : MonoBehaviour
 
     void Interact()
     {
-        isInteracting = true;
         animator.SetTrigger("Interact");
-        Debug.Log("Test started");
         Passenger passenger = closestPassenger.GetComponent<Passenger>();
-        dialogueManager.StartDialogue(passenger.dialogue);
-
-        passengerControls.gameObject.SetActive(true);
-        passengerControls.Set(passenger);
+        if(!passenger.isSpecial())
+        {
+            dialogueManager.StartDialogue(passenger.dialogue);
+            passengerControls.gameObject.SetActive(true);
+            passengerControls.Set(passenger);
+        }
+        else
+        {
+            //cast passenger to special passenger
+            SpecialPassenger spassenger = passenger as SpecialPassenger;
+            spassenger.canMove = false;
+            dialogueManager.StartSpecialDialogue(spassenger.dialogue);
+        }
     }
 
     public void EndInteract()
     {
+        Debug.Log("Ending interaction");
         passengerControls.gameObject.SetActive(false);
-        isInteracting = false;
         dialogueManager.EndDialogue();
     }
 }

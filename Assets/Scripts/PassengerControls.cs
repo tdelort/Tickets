@@ -8,6 +8,7 @@ public class PassengerControls : MonoBehaviour
 {
     Passenger passenger;
 
+    public DialogueManager dialogueManager;
     public enum ControlObjectType
     {
         TICKET,
@@ -61,7 +62,7 @@ public class PassengerControls : MonoBehaviour
     {
         //update time on watch, can be optimized, I guess, but for now it is just fine
         difference = DateTime.Now - startTime ;
-        DateTime processedTime = GameData.GameTime.AddSeconds(difference.TotalSeconds);
+        DateTime processedTime = GameManager.GameTime.AddSeconds(difference.TotalSeconds);
         watch.GetComponentInChildren<TextMesh>().text = processedTime.ToString("G");
 
         //check input
@@ -75,6 +76,8 @@ public class PassengerControls : MonoBehaviour
                     Debug.Log("Hit fine button");
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.FINE_SELECTED);
                     fine = true;
+                    passenger.dialogue.SetDialogue(Sentence.SentenceType.PLEAD);
+                    dialogueManager.StartDialogue(passenger.dialogue);
                 }
                 
                 if(fine && hit.collider.gameObject.CompareTag("ValidateButton"))
@@ -87,6 +90,7 @@ public class PassengerControls : MonoBehaviour
                     if(passenger != null)
                         GameManager.CheckUsagerWhenAmendeClicked(passenger);
                     GameObject.FindObjectOfType<Interaction>().EndInteract();
+                    dialogueManager.StartDialogue(passenger.dialogue);
                 }
 
                 if(fine && hit.collider.gameObject.CompareTag("CancelButton"))
@@ -175,10 +179,6 @@ public class PassengerControls : MonoBehaviour
     }
     private void SetPasseport(GameObject obj, Passenger.Passeport p)
     {
-        Debug.Log("PASSEPORT");
-        Debug.Log(p.present);
-        Debug.Log(obj);
-        Debug.Log(p.ToText());
         if(!p.present)
         {
             obj.SetActive(false);

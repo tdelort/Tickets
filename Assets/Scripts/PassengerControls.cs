@@ -62,7 +62,7 @@ public class PassengerControls : MonoBehaviour
     {
         //update time on watch, can be optimized, I guess, but for now it is just fine
         difference = DateTime.Now - startTime ;
-        DateTime processedTime = GameData.GameTime.AddSeconds(difference.TotalSeconds);
+        DateTime processedTime = GameManager.GameTime.AddSeconds(difference.TotalSeconds);
         watch.GetComponentInChildren<TextMesh>().text = processedTime.ToString("G");
 
         //check input

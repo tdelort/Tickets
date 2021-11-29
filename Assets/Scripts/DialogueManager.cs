@@ -70,6 +70,7 @@ public class DialogueManager : MonoBehaviour
     
     public void EndDialogue()
     {
+        ResetButtons();
         animator.SetBool("IsOpen", false);
     }
 

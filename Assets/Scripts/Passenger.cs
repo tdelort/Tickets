@@ -123,7 +123,7 @@ public class Passenger : MonoBehaviour
         isInOrder = inOrder;
         //Debug.Log("Passenger in order : " + isInOrder);
         doIllegal = illegal;
-        int level = GameData.getCurrentLevel();
+        int level = GameManager.getCurrentLevel();
         setPermit();
         if (level > 0)
         {
@@ -222,11 +222,11 @@ public class Passenger : MonoBehaviour
     private void setPermit()
     {
         
-        DateTime texpiredTime = GameData.GameTime;
+        DateTime texpiredTime = GameManager.GameTime;
         texpiredTime = texpiredTime.AddHours(UnityEngine.Random.Range(0f, ticketValidity));
 
         
-        DateTime sexpiredTime = GameData.GameTime;
+        DateTime sexpiredTime = GameManager.GameTime;
         sexpiredTime = sexpiredTime.AddDays(UnityEngine.Random.Range(0f, subValidity));
 
         double rand = coinFlip();
@@ -245,11 +245,11 @@ public class Passenger : MonoBehaviour
     }
     private void setId()
     {
-        DateTime pexpiredTime = GameData.GameTime;
+        DateTime pexpiredTime = GameManager.GameTime;
         pexpiredTime = pexpiredTime.AddYears(Mathf.RoundToInt(UnityEngine.Random.Range(0f, passValidity-1f)));
         pexpiredTime = pexpiredTime.AddDays(UnityEngine.Random.Range(0f, 365f));
 
-        DateTime iexpiredTime = GameData.GameTime;
+        DateTime iexpiredTime = GameManager.GameTime;
         iexpiredTime = iexpiredTime.AddYears(Mathf.RoundToInt(UnityEngine.Random.Range(0f, idValidity-1f)));
         iexpiredTime = iexpiredTime.AddDays(UnityEngine.Random.Range(0f, 365f));
 
@@ -271,7 +271,7 @@ public class Passenger : MonoBehaviour
     }
     private void setAutorisation()
     {
-        DateTime autExpiredTime = GameData.GameTime;
+        DateTime autExpiredTime = GameManager.GameTime;
         autExpiredTime = autExpiredTime.AddHours(UnityEngine.Random.Range(0f, autValidity));
 
         autorisation = new Autorisation(true, passengerName,
@@ -285,7 +285,7 @@ public class Passenger : MonoBehaviour
         {
             if (ticket.present)
             {
-                DateTime texpiredTime = GameData.GameTime;
+                DateTime texpiredTime = GameManager.GameTime;
                 texpiredTime = texpiredTime.AddHours(-1f*UnityEngine.Random.Range(0f, ticketValidity));
 
                 ticket.expiredTime = texpiredTime;
@@ -295,9 +295,9 @@ public class Passenger : MonoBehaviour
                 //make time false or name
                 //if it is tutorial (no identification) don't make sub with false name
                 //TODO : this is a clumzy bugfix, to discuss
-                if (GameData.getCurrentLevel()==0 || coinFlip() < 0.5)
+                if (GameManager.getCurrentLevel()==0 || coinFlip() < 0.5)
                 {
-                    DateTime sexpiredTime = GameData.GameTime;
+                    DateTime sexpiredTime = GameManager.GameTime;
                     sexpiredTime = sexpiredTime.AddDays(-1f * UnityEngine.Random.Range(0f, subValidity));
 
                     subscription.expiredTime = sexpiredTime;
@@ -325,7 +325,7 @@ public class Passenger : MonoBehaviour
         {
             if (passeport.present)
             {
-                DateTime pexpiredTime = GameData.GameTime;
+                DateTime pexpiredTime = GameManager.GameTime;
                 pexpiredTime = pexpiredTime.AddYears(Mathf.RoundToInt(-1f * 
                     UnityEngine.Random.Range(0f, passValidity-1f)));
                 pexpiredTime = pexpiredTime.AddDays(-1f *
@@ -335,7 +335,7 @@ public class Passenger : MonoBehaviour
             }
             else
             {
-                DateTime iexpiredTime = GameData.GameTime;
+                DateTime iexpiredTime = GameManager.GameTime;
                 iexpiredTime = iexpiredTime.AddYears(Mathf.RoundToInt(-1f *
                     UnityEngine.Random.Range(0f, idValidity-1f)));
                 iexpiredTime = iexpiredTime.AddDays(-1f *
@@ -359,7 +359,7 @@ public class Passenger : MonoBehaviour
             
             if (coinFlip() < 0.5)
             {
-                DateTime autExpiredTime = GameData.GameTime;
+                DateTime autExpiredTime = GameManager.GameTime;
                 autExpiredTime = autExpiredTime.AddHours(-1 * UnityEngine.Random.Range(0f, autValidity));
 
                 autorisation.expiredTime = autExpiredTime;

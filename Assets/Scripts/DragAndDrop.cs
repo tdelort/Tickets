@@ -48,8 +48,10 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3 mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             item.transform.position = new Vector3(mp.x - offset.x, mp.y - offset.y, item.transform.position.z);
+            Vector2 min = (Vector2)transform.position - size / 2;
+            Vector2 max = (Vector2)transform.position + size / 2;
             // clamp item position to the screen
-            item.transform.position = new Vector3(Mathf.Clamp(item.transform.position.x, -size.x, size.x), Mathf.Clamp(item.transform.position.y, -size.y, size.y), item.transform.position.z);
+            item.transform.position = new Vector3(Mathf.Clamp(item.transform.position.x, min.x, max.x), Mathf.Clamp(item.transform.position.y, min.y, max.y), item.transform.position.z);
         }
     }
 }

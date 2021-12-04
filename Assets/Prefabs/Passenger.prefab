@@ -215,6 +215,18 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 7c0ef6d8a9f58074eb959662808d4a64, type: 2}
   - {fileID: 7400000, guid: 430d4fcc16290424da551688e8853cee, type: 2}
   - {fileID: 7400000, guid: 3e60947b6423fa14b9e1862b50a092e6, type: 2}
+  - {fileID: 7400000, guid: 8370399506d6a89428a3504e5f97c527, type: 2}
+  - {fileID: 7400000, guid: d9538544a9c00754b83c5e964faa3616, type: 2}
+  - {fileID: 7400000, guid: 8eeffb99e5c893f419c0f98f002041c6, type: 2}
+  - {fileID: 7400000, guid: 0c19573b736d5bc449aa7ac96653eb56, type: 2}
+  - {fileID: 7400000, guid: 11d55c307a93ed6438b0dfdc86843090, type: 2}
+  - {fileID: 7400000, guid: eef8641c3d38be34eaaddadaa76a90eb, type: 2}
+  - {fileID: 7400000, guid: a946ee6e156ed0c45a81b8278a8862d0, type: 2}
+  - {fileID: 7400000, guid: fc0c1752a2d12f342893410d4518deb8, type: 2}
+  - {fileID: 7400000, guid: c56fd95b57a01e0449964b3effbdcd51, type: 2}
+  - {fileID: 7400000, guid: 38e94dad2d3fc20469df08883d112bf0, type: 2}
+  - {fileID: 7400000, guid: 28b75479edaeb6d4da56220440c4dc69, type: 2}
+  - {fileID: 7400000, guid: 837db51b50bbb9942ae2d7874107bab3, type: 2}
   walkClips:
   - {fileID: 7400000, guid: 5251567dc9dc7b145a5cacfb3a03b365, type: 2}
   - {fileID: 7400000, guid: 6042c8c63e0f0ce4fb0e5cf8506af4e9, type: 2}
@@ -222,6 +234,18 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 0cd78f9ba06db9d458db416a93ece2da, type: 2}
   - {fileID: 7400000, guid: 7bc06b0f459f6194f9b230fe25f81bc8, type: 2}
   - {fileID: 7400000, guid: 9c205e3969a20874d9f141d9471e4f2d, type: 2}
+  - {fileID: 7400000, guid: 96fb9756ec8c0ec4f8350885c079ef5c, type: 2}
+  - {fileID: 7400000, guid: d853db28541b8674f92ead6a29f72b2f, type: 2}
+  - {fileID: 7400000, guid: b722308010d54e5419d5b99b580d8b58, type: 2}
+  - {fileID: 7400000, guid: d50f6818cdd2a0f418ce1d8c9195f32b, type: 2}
+  - {fileID: 7400000, guid: c5675675bd7894f44bdc0fac96099be0, type: 2}
+  - {fileID: 7400000, guid: 09369c854e0908a44a33350d620c57ec, type: 2}
+  - {fileID: 7400000, guid: a8e7082308914134a847fba56c5f7a39, type: 2}
+  - {fileID: 7400000, guid: 3313fb1ac1e240842bcb2c918588294e, type: 2}
+  - {fileID: 7400000, guid: 5d6e770b221c63449a2bda69fc2561d3, type: 2}
+  - {fileID: 7400000, guid: f12bb0c7c85e25f41a56a45e9aa1ad02, type: 2}
+  - {fileID: 7400000, guid: e30755e2563b5d64b910191004b38ff0, type: 2}
+  - {fileID: 7400000, guid: efa194a7cba397d4692df50d3abb66de, type: 2}
 --- !u!61 &8452168450436133336
 BoxCollider2D:
   m_ObjectHideFlags: 0

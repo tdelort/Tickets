@@ -23,7 +23,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject migrantPrefab;
     [SerializeField] GameObject resistantePrefab;
     
-
+    [SerializeField] private BackgroundBehaviour bb;
 
     // Start is called before the first frame update
     private void Start() {
@@ -85,6 +85,8 @@ public class LevelController : MonoBehaviour
     private int numberOfPassengerLeaving;
 
     int nbStops = 0;
+
+    bool arriving = false;
     void Update()
     {
         if(nbStops > 3)
@@ -94,28 +96,25 @@ public class LevelController : MonoBehaviour
         }
         
         //to manage if train is running or not
-        if(!interaction.isInteracting)
+        if(!arriving && !interaction.isInteracting)
             internalClock += Time.deltaTime;
 
         if (internalClock > 5 && isMoving == false)
         {
+            bb.Leave();
             isMoving = true;
             internalClock = 0;
         }
         if (internalClock > 10 && isMoving == true)
         {
             Debug.Log("Train stopped");
-            numberOfPassengerLeaving = (int)Random.Range(0,actualNumberOfPassenger);
-            //Debug.Log(numberOfPassengerLeaving + " passenger have left the train");
-            actualNumberOfPassenger -= numberOfPassengerLeaving;
-            numberOfPassengerComingIn = (int)Random.Range(0,numberOfPassenger - actualNumberOfPassenger);
-            //Debug.Log(numberOfPassengerComingIn + " passenger come in the train");
+
             isMoving = false;
             internalClock = 0;
-
-            FindObjectOfType<Interaction>().EndInteract();
-
-            nbStops++;
+            arriving = true;
+            bb.Arrive();
+            bb.OnFullStop.RemoveAllListeners();
+            bb.OnFullStop.AddListener(() => OnStop());
         }
         //create passager while the train is stopped
         int nbNIOPass = (int)Random.Range(0, GameManager.NbNotInOrderPassenger);
@@ -134,8 +133,19 @@ public class LevelController : MonoBehaviour
             actualNumberOfPassenger += 1;
         }
         numberOfPassengerComingIn = 0;
+    }
 
-        
+    private void OnStop()
+    {
+        numberOfPassengerLeaving = (int)Random.Range(0,actualNumberOfPassenger);
+        //Debug.Log(numberOfPassengerLeaving + " passenger have left the train");
+        actualNumberOfPassenger -= numberOfPassengerLeaving;
+        numberOfPassengerComingIn = (int)Random.Range(0,numberOfPassenger - actualNumberOfPassenger);
+        //Debug.Log(numberOfPassengerComingIn + " passenger come in the train");
 
+        FindObjectOfType<Interaction>().EndInteract();
+
+        nbStops++;
+        arriving = false;
     }
 }

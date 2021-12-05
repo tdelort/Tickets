@@ -30,6 +30,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private Dialogue betweenDialogue;
     [SerializeField] private Dialogue endDialogue;
 
+    [SerializeField] private BackgroundBehaviour bb;
     MetroState metroState = MetroState.Stopped;
     TutoState tutoState = TutoState.Waiting;
 
@@ -42,8 +43,6 @@ public class TutorialController : MonoBehaviour
      *  - Un passager en règle entre dans le metro, le joueur le controle
      *  - Un passager sans ticket entre, le joueur doit lui mettre une contravention.
      */
-
-    // Start is called before the first frame update
 
     void Update()
     {
@@ -76,6 +75,10 @@ public class TutorialController : MonoBehaviour
         {
             internalTimer = 0;
             dialogueManager.StartDialogue(helloDialogue);
+            foreach(GameObject o in bb.Doors)
+            {
+                o.GetComponent<DoorBehaviour>().DoorOpen();
+            }
             return TutoState.Hello;
         }
         return TutoState.Waiting;
@@ -96,6 +99,7 @@ public class TutorialController : MonoBehaviour
 
         internalTimer = 0;
         metroState = MetroState.Moving;
+        bb.Leave();
         return TutoState.GoodPassenger;
     }
 
@@ -107,6 +111,7 @@ public class TutorialController : MonoBehaviour
             passenger.leave();
             metroState = MetroState.Stopped;
             dialogueManager.StartDialogue(betweenDialogue);
+            bb.Arrive();
             return TutoState.BetweenPassengers;
         }
         return TutoState.GoodPassenger;
@@ -127,6 +132,7 @@ public class TutorialController : MonoBehaviour
 
         internalTimer = 0;
         metroState = MetroState.Moving;
+        bb.Leave();
         return TutoState.BadPassenger;
     }
 
@@ -138,6 +144,7 @@ public class TutorialController : MonoBehaviour
             passenger.leave();
             metroState = MetroState.Stopped;
             dialogueManager.StartDialogue(endDialogue);
+            bb.Arrive();
             return TutoState.End;
         }
         return TutoState.BadPassenger;

@@ -44,8 +44,16 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             //SceneManager.LoadScene("End");
         }
-        setCurrentLevel(level);
-        SceneManager.LoadScene("TristanLevel");
+        else if(level == 0)
+        {
+            setCurrentLevel(level);
+            SceneManager.LoadScene("Tutorial");
+        }
+        else
+        {
+            setCurrentLevel(level);
+            SceneManager.LoadScene("TristanLevel");
+        }
     }
 
     public static int getCurrentLevel()
@@ -124,9 +132,9 @@ public class GameManager : MonoBehaviour
     public static void ContinueGame()
     {
         Debug.Log("ContinueGame");
-        //TODO : Load the last level
-        int level = 2;
-        startLevel(level);
+        LoadGame();
+        startLevel(maxLevel);
+
     }
 
     public static void OptionsMenu()

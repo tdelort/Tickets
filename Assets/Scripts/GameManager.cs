@@ -115,6 +115,8 @@ public class GameManager : MonoBehaviour
     // ################# UI PART ####################
     public static void NewGame()
     {
+        ResetGame();
+        SaveGame(); //To erase the old save
         Debug.Log("New Game");
         startLevel(0);
     }
@@ -157,6 +159,12 @@ public class GameManager : MonoBehaviour
         // The player as finished the level "currentLevel" hence the +1
         maxLevel = currentLevel + 1 > maxLevel ? currentLevel + 1 : maxLevel;
         SceneManager.LoadScene("BetweenLevels");
+    }
+
+    private static void ResetGame()
+    {
+        score = 0;
+        maxLevel = 0;
     }
 
     private static void SaveGame()

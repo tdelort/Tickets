@@ -19,6 +19,8 @@ public class SpecialPassenger : Passenger
         }
 
         dialogue.Init(name, type);
+
+        dialogue.onDialogueEnd.AddListener((status) => onDialogueEnd(type, status));
         base.setSprite();
     }
 
@@ -44,5 +46,31 @@ public class SpecialPassenger : Passenger
     public override bool isSpecial()
     {
         return true;
+    }
+
+    private void onDialogueEnd(SpecialPassengerType type, int val)
+    {
+        Debug.Log("Dialogue ended : " + type + " " + val);
+        switch (type)
+        {
+            case SpecialPassengerType.MIGRANT:
+                if (val == -1)
+                    GameManager.migrantAlignment = 1;
+                else if (val == -2)
+                    GameManager.migrantAlignment = -1;
+                break;
+            case SpecialPassengerType.RESISTANTE:
+                if (val == -1)
+                    GameManager.resistanteAlignment = 1;
+                else if (val == -2)
+                    GameManager.resistanteAlignment = -1;
+                break;
+            case SpecialPassengerType.PROPARTI:
+                if (val == -1)
+                    GameManager.propartiAlignment = 1;
+                else if (val == -2)
+                    GameManager.propartiAlignment = -1;
+                break;
+        }
     }
 }

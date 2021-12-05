@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 public enum SpecialPassengerType
@@ -13,6 +14,7 @@ public enum SpecialPassengerType
 // A fournir a un passenger special
 public class SpecialDialogue
 {
+    public UnityEvent<int> onDialogueEnd = new UnityEvent<int>();
     public string name = "";
     public SpecialPassengerType specialType;
 

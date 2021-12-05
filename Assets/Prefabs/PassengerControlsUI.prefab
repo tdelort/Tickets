@@ -935,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 5503494570385427550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 5, z: 1}
+  m_LocalScale: {x: 3.75, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 5503494571786771691}
   m_RootOrder: 1
@@ -1164,7 +1164,7 @@ TextMesh:
   m_Anchor: 1
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 30
   m_FontStyle: 3
   m_RichText: 1
   m_Font: {fileID: 0}
@@ -1613,6 +1613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ac08e0b21c927469ae295c2f0ff01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
   controlObjects:
   - type: 0
     go: {fileID: 5503494571796586791}

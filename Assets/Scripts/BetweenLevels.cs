@@ -13,8 +13,22 @@ public class BetweenLevels : MonoBehaviour
     void Start()
     {
         scoreText.text = "Score: " + GameManager.score.ToString();
-        string personality = "ALIGNEMENT";
-        personalityText.text = "Vous êtes en majorité du côté des " + personality;
+
+        personalityText.text = "";
+        if(GameManager.currentLevel >= 1)
+        {
+            personalityText.text = "Alignement :\n";
+            personalityText.text += "* Proparti : " + (GameManager.propartiAlignment > 0 ? "Aidé" : "Ignoré") + "\n";
+        }
+        if(GameManager.currentLevel >= 2)
+        {
+            personalityText.text += "* Migrant : " + (GameManager.migrantAlignment > 0 ? "Aidé" : "Ignoré") + "\n";
+        }
+        if(GameManager.currentLevel >= 3)
+        {
+            personalityText.text += "* Resistante : " + (GameManager.resistanteAlignment > 0 ? "Aidé" : "Ignoré") + "\n";
+        }
+
         nextLevelButton.onClick.AddListener(() => {
             GameManager.startLevel(GameManager.currentLevel + 1);
         });

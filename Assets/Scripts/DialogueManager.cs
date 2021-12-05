@@ -115,6 +115,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Negative : " + next);
             ResetButtons();
             EndDialogue();
+            dialogue.onDialogueEnd.Invoke(next);
             Debug.Log("End of the dialogue");
         }
         else

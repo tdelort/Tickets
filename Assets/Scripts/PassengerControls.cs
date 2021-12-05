@@ -129,7 +129,13 @@ public class PassengerControls : MonoBehaviour
                     SetId(co.go, p.id);
                     break;
                 case ControlObjectType.RULELIST:
-                    SetRuleList(co.go, new List<string>(){"Tickets are \n Mandatory", "No smoking", "No alcohol"});
+                    List<string> rules = new List<string>(){
+                        "Titre de transport",
+                        "Pièce d'identité",
+                        "Regle 3",
+                        "Regle 4"
+                    };
+                    SetRuleList(co.go, rules);
                     break;
                 case ControlObjectType.FINEMACHINE:
                     SetFineMachine(co.go, FineMachineState.IDLE);
@@ -138,6 +144,7 @@ public class PassengerControls : MonoBehaviour
             co.go.transform.position = new Vector3(co.go.transform.position.x, co.go.transform.position.y, originalZ);
             co.go.transform.position -= Vector3.forward * co.layer * 0.1f;
         } //foreach
+
     }
 
     /*
@@ -192,10 +199,11 @@ public class PassengerControls : MonoBehaviour
     private void SetRuleList(GameObject obj, List<string> rules)
     {
         obj.SetActive(true);
-        obj.GetComponentInChildren<TextMesh>().text = "";
-        foreach(string s in rules)
+        TextMesh tm = obj.GetComponentInChildren<TextMesh>();
+        tm.text = "Pièces obligatoires : \n";
+        for(int i = 0; i <= GameManager.currentLevel; i++)
         {
-            obj.GetComponentInChildren<TextMesh>().text += "- " + s + "\n";
+            obj.GetComponentInChildren<TextMesh>().text += "- " + rules[i] + "\n";
         }
     }
 

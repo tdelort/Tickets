@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public static int totalLevels = 3;
     public static int score {get; set;}
     public static int maxLevel {get; set;}
+    public static int migrantAlignment {get; set;}
+    public static int propartiAlignment {get; set;}
+    public static int resistanteAlignment {get; set;}
     // end Saved Data
 
     public static int currentLevel {get; set;}
@@ -173,13 +176,19 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         maxLevel = 0;
+        migrantAlignment = 0;
+        propartiAlignment = 0;
+        resistanteAlignment = 0;
     }
 
     private static void SaveGame()
     {
         SaveData data = new SaveData(
             maxLevel,
-            score
+            score,
+            migrantAlignment,
+            propartiAlignment,
+            resistanteAlignment
         );
         SaveSystem.Write(data);
     }
@@ -191,11 +200,17 @@ public class GameManager : MonoBehaviour
         {
             maxLevel = data.level;
             score = data.score;
+            migrantAlignment = data.migrantAlignment;
+            propartiAlignment = data.propartiAlignment;
+            resistanteAlignment = data.resistanteAlignment;
         }
         else
         {
             maxLevel = 0;
             score = 0;
+            migrantAlignment = 0;
+            propartiAlignment = 0;
+            resistanteAlignment = 0;
         }
     }
 }

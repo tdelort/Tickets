@@ -53,7 +53,7 @@ public class Interaction : MonoBehaviour
         }
         else
         {
-            if(closestPassenger!=null && Input.GetButtonDown("Interact"))
+            if(closestPassenger!=null && !closestPassenger.hasBeenFined && Input.GetButtonDown("Interact"))
             {
                 Debug.Log("Interact");
                 isInteracting = true;
@@ -94,6 +94,8 @@ public class Interaction : MonoBehaviour
 
     private void setClosestPassenger(Passenger passenger)
     {
+        if(passenger != null && passenger.hasBeenFined)
+            return;
         if (closestPassenger != null)
         {
             closestPassenger.transform.GetChild(0).gameObject.SetActive(false);

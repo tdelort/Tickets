@@ -89,6 +89,8 @@ public class PassengerControls : MonoBehaviour
                     
                     if(passenger != null)
                         GameManager.CheckUsagerWhenAmendeClicked(passenger);
+                    passenger.hasBeenFined = true;
+                    passenger.transform.GetChild(0).gameObject.SetActive(false);
                     GameObject.FindObjectOfType<Interaction>().EndInteract();
                     dialogueManager.StartDialogue(passenger.dialogue);
                 }

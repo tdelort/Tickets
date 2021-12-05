@@ -6,6 +6,7 @@ using System;
 
 public class Passenger : MonoBehaviour
 {
+    public bool hasBeenFined = false;
     double ticketProb = 0.5;
     double PassportProb = 0.5;
 

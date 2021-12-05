@@ -7,7 +7,6 @@ using System;
 public class Dialogue
 {
     public string name;
-    [TextArea(3, 10)]
     public Sentence[] sentences;
 
     //for now, setDialogue clear sentences and create a new random one of the goos type
@@ -31,6 +30,8 @@ public class Sentence
     }
 
     public SentenceType type;
+
+    [TextArea(3, 10)]
     public String text;
 }
 

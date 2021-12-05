@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> names;
     private Queue<string> sentences;
     public Animator animator;
+    public bool inDialogue = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,17 +39,20 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence.text);
         }
+        Debug.Log(sentences.Count);
         displayNextSentence();
+        inDialogue = true;
     }
     public void displayNextSentence()
     {
+        Debug.Log("displayNextSentence");
         //if dialog tab is open
         if (animator.GetBool("IsOpen"))
         {
             if (sentences.Count > 0)
             {
                 string sentence = sentences.Dequeue();
-                StopAllCoroutines();
+                //StopAllCoroutines();
                 StartCoroutine(TypeSentence(sentence));
             }
             else
@@ -70,6 +74,7 @@ public class DialogueManager : MonoBehaviour
     
     public void EndDialogue()
     {
+        inDialogue = false;
         ResetButtons();
         animator.SetBool("IsOpen", false);
     }

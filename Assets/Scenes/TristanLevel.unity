@@ -1244,9 +1244,9 @@ MonoBehaviour:
   - {fileID: 2047561412}
   leftBound: {fileID: 887525950}
   rightBound: {fileID: 1627179529}
-  propartiPrefab: {fileID: 0}
+  propartiPrefab: {fileID: 8444170367591727545, guid: 50998d92c6b1e874eb14187c6dd6645c, type: 3}
   migrantPrefab: {fileID: 9218622954208388012, guid: a60a30816e80d4846b04078167a4748e, type: 3}
-  resistantePrefab: {fileID: 0}
+  resistantePrefab: {fileID: 7988357035705873337, guid: 06eb16a08670fbd4c87720b32b342a18, type: 3}
 --- !u!4 &2127364800
 Transform:
   m_ObjectHideFlags: 0

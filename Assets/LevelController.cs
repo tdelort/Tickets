@@ -35,9 +35,17 @@ public class LevelController : MonoBehaviour
         SpecialPassenger sp;
         switch (GameManager.getCurrentLevel())
         {
+            case 1:
+                sp = Instantiate(propartiPrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
+                sp.Init(SpecialPassengerType.PROPARTI);
+                break;
             case 2:
                 sp = Instantiate(migrantPrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
                 sp.Init(SpecialPassengerType.MIGRANT);
+                break;
+            case 3:
+                sp = Instantiate(resistantePrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
+                sp.Init(SpecialPassengerType.RESISTANTE);
                 break;
             default:
                 Debug.Log("No special passenger for this level YET");

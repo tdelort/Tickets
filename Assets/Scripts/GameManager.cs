@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         score = 0;
     }
 
+    public static int totalLevels = 3;
     public static int score {get; set;}
     public static int currentLevel {get; set;}
     public static DateTime GameTime { get; set; }
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("ContinueGame");
         //TODO : Load the last level
-        int level = 2;
+        int level = 3;
         startLevel(level);
     }
 

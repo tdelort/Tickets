@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
         else
         {
             setCurrentLevel(level);
-            SceneManager.LoadScene("TristanLevel");
+            SceneManager.LoadScene("JournalScene");
         }
     }
-
+ 
     public static int getCurrentLevel()
     {
         return currentLevel;
@@ -170,6 +170,11 @@ public class GameManager : MonoBehaviour
         // The player as finished the level "currentLevel" hence the +1
         maxLevel = currentLevel + 1 > maxLevel ? currentLevel + 1 : maxLevel;
         SceneManager.LoadScene("BetweenLevels");
+    }
+
+    public static void AfterJournal()
+    {
+        SceneManager.LoadScene("TristanLevel");
     }
 
     private static void ResetGame()

@@ -6,10 +6,10 @@ public class NewsBehaviour : MonoBehaviour
 {
     public GameObject headLine;
     public GameObject text1, text2, text3;
-    private int choice;
     // Start is called before the first frame update
     void Start()
     {
+        int choice = GameManager.currentLevel;
         if (choice == 1)
         {
             headLine.GetComponent<TextMesh>().text = "ELECTIONS PRESIDENTIELLES";
@@ -36,7 +36,7 @@ public class NewsBehaviour : MonoBehaviour
 
     public void SceneChange()
     {
-
+        GameManager.AfterJournal();
     }
     
 }

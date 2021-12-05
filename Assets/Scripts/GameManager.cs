@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
         score = 0;
     }
 
+    // Saved Data
     public static int score {get; set;}
+    public static int maxLevel {get; set;}
+    // end Saved Data
+
     public static int currentLevel {get; set;}
     public static DateTime GameTime { get; set; }
     public static int NbPassenger { get; set; }
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public static void startLevel(int level)
     {
+        Debug.Log("##### Starting Level " + level + " #####");
         if(level > 3)
         {
             SceneManager.LoadScene("MainMenu");
@@ -50,6 +55,7 @@ public class GameManager : MonoBehaviour
     public static void setCurrentLevel(int level)
     {
         currentLevel = level;
+        maxLevel = currentLevel > maxLevel ? currentLevel : maxLevel;
 
         NbPassenger = 8;
         NbNotInOrderPassenger = 4;
@@ -115,9 +121,8 @@ public class GameManager : MonoBehaviour
     public static void ContinueGame()
     {
         Debug.Log("ContinueGame");
-        //TODO : Load the last level
-        int level = 2;
-        startLevel(level);
+        LoadGame();
+        startLevel(maxLevel);
     }
 
     public static void OptionsMenu()
@@ -134,18 +139,45 @@ public class GameManager : MonoBehaviour
 
     public static void QuitGame()
     {
+        SaveGame();
         Application.Quit();
     }
 
     public static void ReturnToMainMenu()
     {
+        SaveGame();
         currentLevel = 0;
         SceneManager.LoadScene("MainMenu");
     }
 
     public static void BetweenLevels()
     {
+        // The player as finished the level "currentLevel" hence the +1
+        maxLevel = currentLevel + 1 > maxLevel ? currentLevel + 1 : maxLevel;
         SceneManager.LoadScene("BetweenLevels");
     }
 
+    private static void SaveGame()
+    {
+        SaveData data = new SaveData(
+            maxLevel,
+            score
+        );
+        SaveSystem.Write(data);
+    }
+
+    private static void LoadGame()
+    {
+        SaveData data = SaveSystem.Read();
+        if (data != null)
+        {
+            maxLevel = data.level;
+            score = data.score;
+        }
+        else
+        {
+            maxLevel = 0;
+            score = 0;
+        }
+    }
 }

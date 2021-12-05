@@ -26,9 +26,10 @@ MonoBehaviour:
     sentences: []
   spriteType: 0
   idleClips:
-  - {fileID: 7400000, guid: 8f0259daead66b94d8cbfa05871555e5, type: 2}
+  - {fileID: 7400000, guid: d0c909feefedf854586ec44ee7c8094a, type: 2}
   walkClips:
-  - {fileID: 7400000, guid: 5251567dc9dc7b145a5cacfb3a03b365, type: 2}
+  - {fileID: 7400000, guid: 963a81c197633fd498caa45ad3bb61d9, type: 2}
+  canMove: 1
 --- !u!1001 &683133209111349957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,7 +47,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8544976337864010095, guid: 8679343157b4ff643ae0bf6fa0187534, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8544976337864010095, guid: 8679343157b4ff643ae0bf6fa0187534, type: 3}
       propertyPath: m_LocalPosition.x

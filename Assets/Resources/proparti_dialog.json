@@ -1,0 +1,49 @@
+{"entries":
+    [
+        {
+            "id": 0,
+            "text": "Hé le vioc !",
+            "answers" :
+            [
+                {
+                    "text": "Répète pour voir !?",
+                    "next": 1
+                },
+                {
+                    "text": "Papiers s'il vous plait",
+                    "next": 2
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "text": "J'aurais besoin de ton aide..",
+            "answers" :
+            [
+                {
+                    "text": "Bien-sûr !",
+                    "next": -1
+                },
+                {
+                    "text": "Papiers s'il vous plait",
+                    "next": 2
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "S'il vous plait, je ne les ai pas, c'est mère qui les avaient avant qu'elle . . . qu'elle ne . . .",
+            "answers" :
+            [
+                {
+                    "text": "Ce n'est pas mon problème",
+                    "next": -2
+                },
+                {
+                    "text": "Que se passe-t-il ?",
+                    "next": 1
+                }
+            ]
+        }
+    ]
+}

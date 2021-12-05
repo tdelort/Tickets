@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Saved Data
+    public static int totalLevels = 3;
     public static int score {get; set;}
     public static int maxLevel {get; set;}
     // end Saved Data
@@ -121,8 +122,9 @@ public class GameManager : MonoBehaviour
     public static void ContinueGame()
     {
         Debug.Log("ContinueGame");
-        LoadGame();
-        startLevel(maxLevel);
+        //TODO : Load the last level
+        int level = 2;
+        startLevel(level);
     }
 
     public static void OptionsMenu()

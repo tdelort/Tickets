@@ -134,8 +134,7 @@ public class PassengerControls : MonoBehaviour
                     List<string> rules = new List<string>(){
                         "Titre de transport",
                         "Pièce d'identité",
-                        "Regle 3",
-                        "Regle 4"
+                        "Autorisation de sortie",
                     };
                     SetRuleList(co.go, rules);
                     break;
@@ -203,7 +202,10 @@ public class PassengerControls : MonoBehaviour
         obj.SetActive(true);
         TextMesh tm = obj.GetComponentInChildren<TextMesh>();
         tm.text = "Pièces obligatoires : \n";
-        for(int i = 0; i <= GameManager.currentLevel; i++)
+        //always need tickets (level 0 and 1)
+        obj.GetComponentInChildren<TextMesh>().text += "- " + rules[0] + "\n";
+        //from level 2, add rule for each level
+        for (int i = 2; i <= GameManager.currentLevel; i++)
         {
             obj.GetComponentInChildren<TextMesh>().text += "- " + rules[i] + "\n";
         }

@@ -130,12 +130,13 @@ public class Passenger : MonoBehaviour
         //Debug.Log("Passenger in order : " + isInOrder);
         doIllegal = illegal;
         int level = GameManager.getCurrentLevel();
+        //for tutorial and level one, only permit
         setPermit();
-        if (level > 0)
+        if (level > 2)
         {
             setId();
         }
-        if (level > 1)
+        if (level > 3)
         {
             setAutorisation();
             mustBeNotGreen = true;
@@ -146,12 +147,16 @@ public class Passenger : MonoBehaviour
             double coin = coinFlip();
             switch (level)
             {
+                //tutorial
                 case 0:
                     makePermitFalse();
                     break;
 
-
                 case 1:
+                    makePermitFalse();
+                    break;
+
+                case 2:
                     if (coin < 0.5)
                     {
                         makePermitFalse();
@@ -185,12 +190,16 @@ public class Passenger : MonoBehaviour
             double coin = coinFlip();
             switch (level)
             {
+                //tutorial
                 case 0:
                     smoking = true;
                     break;
 
-
                 case 1:
+                    smoking = true;
+                    break;
+
+                case 2:
                     if (coin < 0.5)
                     {
                         smoking = true;

@@ -44,20 +44,22 @@ public class LevelController : MonoBehaviour
             case 1:
                 sp = Instantiate(propartiPrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
                 sp.Init(SpecialPassengerType.PROPARTI);
+                sp.arrive();
                 break;
             case 2:
                 sp = Instantiate(migrantPrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
                 sp.Init(SpecialPassengerType.MIGRANT);
+                sp.arrive();
                 break;
             case 3:
                 sp = Instantiate(resistantePrefab, new Vector2(0, 0), Quaternion.identity).GetComponent<SpecialPassenger>();
                 sp.Init(SpecialPassengerType.RESISTANTE);
+                sp.arrive();
                 break;
             default:
                 Debug.Log("No special passenger for this level YET");
                 break;
         }
-
         atStation();
     }
     

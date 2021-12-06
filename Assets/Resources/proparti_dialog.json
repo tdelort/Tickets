@@ -2,11 +2,11 @@
     [
         {
             "id": 0,
-            "text": "Hé le vioc !",
+            "text": "Bonjour monsieur !",
             "answers" :
             [
                 {
-                    "text": "Répète pour voir !?",
+                    "text": "Vous me rappellez quelqu'un, je me trompe ?",
                     "next": 1
                 },
                 {
@@ -17,11 +17,11 @@
         },
         {
             "id": 1,
-            "text": "J'aurais besoin de ton aide..",
+            "text": "Je suis le président du conseil bon dieu ! laissez moi passer !",
             "answers" :
             [
                 {
-                    "text": "Bien-sûr !",
+                    "text": "Excusez moi monsieur, allez-y !",
                     "next": -1
                 },
                 {
@@ -32,7 +32,7 @@
         },
         {
             "id": 2,
-            "text": "S'il vous plait, je ne les ai pas, c'est mère qui les avaient avant qu'elle . . . qu'elle ne . . .",
+            "text": "Je ne les ai pas sur moi, mais ca ne devrais pas poser de problème vu mon rang n'est ce pas ?",
             "answers" :
             [
                 {
@@ -40,7 +40,7 @@
                     "next": -2
                 },
                 {
-                    "text": "Que se passe-t-il ?",
+                    "text": "Quel rang ?",
                     "next": 1
                 }
             ]

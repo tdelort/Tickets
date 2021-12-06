@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
         SaveGame(); //To erase the old save
         Debug.Log("New Game");
         //TODO remettre à zero
-        startLevel(1);
+        startLevel(0);
     }
 
     public static void ContinueGame()

@@ -2,11 +2,11 @@
     [
         {
             "id": 0,
-            "text": "Hé le vioc !",
+            "text": "Ah mince ! vous ! içi !",
             "answers" :
             [
                 {
-                    "text": "Répète pour voir !?",
+                    "text": "Mais, vous.. l'avis de recherche.. !?",
                     "next": 1
                 },
                 {
@@ -17,30 +17,34 @@
         },
         {
             "id": 1,
-            "text": "J'aurais besoin de ton aide..",
+            "text": "Vous êtes de notre camp ou vous êtes à la botte du régime ?",
             "answers" :
             [
                 {
-                    "text": "Bien-sûr !",
+                    "text": "C'est risqué, mais je vous suis !",
                     "next": -1
                 },
                 {
                     "text": "Papiers s'il vous plait",
                     "next": 2
+                },
+                {
+                    "text": "SECURITEE !",
+                    "next": -2
                 }
             ]
         },
         {
             "id": 2,
-            "text": "S'il vous plait, je ne les ai pas, c'est mère qui les avaient avant qu'elle . . . qu'elle ne . . .",
+            "text": "Je ne les ai pas, n'appelez pas la sécurité, ils vont me reconnaître et m'envoyer en prison ! ",
             "answers" :
             [
                 {
-                    "text": "Ce n'est pas mon problème",
+                    "text": "SECURITEE !",
                     "next": -2
                 },
                 {
-                    "text": "Que se passe-t-il ?",
+                    "text": "Que me voulez vous ?",
                     "next": 1
                 }
             ]

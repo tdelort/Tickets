@@ -24,6 +24,8 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private Transform leftBound;
     [SerializeField] private Transform rightBound;
 
+    [SerializeField] private Interaction interaction;
+
     //Dialogues
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private Dialogue helloDialogue;
@@ -37,6 +39,7 @@ public class TutorialController : MonoBehaviour
     float internalTimer = 0;
     GameObject passengerObj;
     Passenger passenger;
+    bool hasinterracted;
     /*
      *  Déroulement du tutoriel :
      *  - Un dialogue apparait pour introduire le joueur dans l'univers
@@ -46,6 +49,10 @@ public class TutorialController : MonoBehaviour
 
     void Update()
     {
+        if (interaction.isInteracting)
+        {
+            hasinterracted = true;
+        }
         internalTimer += Time.deltaTime;
         switch (tutoState) {
             case TutoState.Waiting:
@@ -89,6 +96,7 @@ public class TutorialController : MonoBehaviour
         if(dialogueManager.inDialogue)
             return TutoState.Hello;
 
+        hasinterracted = false;
         Vector2 spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         passengerObj = Instantiate(passengerPrefab, spawnPoint, Quaternion.identity);
         Vector2 endPosition = new Vector2(Random.Range(leftBound.position.x, rightBound.position.x), spawnPoint.y);
@@ -96,6 +104,7 @@ public class TutorialController : MonoBehaviour
         passenger = passengerObj.GetComponent<Passenger>();
         passenger.position(spawnPoint, endPosition);
         passenger.Init(true, false);
+        passenger.arrive();
 
         internalTimer = 0;
         metroState = MetroState.Moving;
@@ -105,7 +114,7 @@ public class TutorialController : MonoBehaviour
 
     private TutoState GoodPassengerState()
     {
-        if(internalTimer > 10)
+        if(hasinterracted && !interaction.isInteracting)
         {
             internalTimer = 0;
             passenger.leave();
@@ -122,6 +131,7 @@ public class TutorialController : MonoBehaviour
         if(dialogueManager.inDialogue)
             return TutoState.BetweenPassengers;
 
+        hasinterracted = false;
         Vector2 spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         passengerObj = Instantiate(passengerPrefab, spawnPoint, Quaternion.identity);
         Vector2 endPosition = new Vector2(Random.Range(leftBound.position.x, rightBound.position.x), spawnPoint.y);
@@ -129,6 +139,7 @@ public class TutorialController : MonoBehaviour
         passenger = passengerObj.GetComponent<Passenger>();
         passenger.position(spawnPoint, endPosition);
         passenger.Init(false, false);
+        passenger.arrive();
 
         internalTimer = 0;
         metroState = MetroState.Moving;
@@ -138,7 +149,7 @@ public class TutorialController : MonoBehaviour
 
     private TutoState BadPassengerState()
     {
-        if(internalTimer > 10)
+        if(hasinterracted && !interaction.isInteracting && passenger.hasBeenFined)
         {
             internalTimer = 0;
             passenger.leave();

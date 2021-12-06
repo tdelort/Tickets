@@ -14,7 +14,7 @@ public class PassengerControlsTests : MonoBehaviour
         // On space start tests
         if (Input.GetKeyDown(KeyCode.Space))
         {   
-            Debug.Log("Test started");
+            //Debug.Log("Test started");
 
             Passenger passenger = gameObject.AddComponent<Passenger>();
             passenger.Init(true, true);

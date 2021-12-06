@@ -53,6 +53,11 @@ public class Passenger : MonoBehaviour
         elapsedTime = 0;
         startPosition = start;
         endPosition = end;
+    }
+
+    public void arrive()
+    {
+        this.gameObject.SetActive(true);
         movingIn = true;
     }
     public void leave()
@@ -125,12 +130,13 @@ public class Passenger : MonoBehaviour
         //Debug.Log("Passenger in order : " + isInOrder);
         doIllegal = illegal;
         int level = GameManager.getCurrentLevel();
+        //for tutorial and level one, only permit
         setPermit();
-        if (level > 0)
+        if (level > 1)
         {
             setId();
         }
-        if (level > 1)
+        if (level > 2)
         {
             setAutorisation();
             mustBeNotGreen = true;
@@ -141,12 +147,16 @@ public class Passenger : MonoBehaviour
             double coin = coinFlip();
             switch (level)
             {
+                //tutorial
                 case 0:
                     makePermitFalse();
                     break;
 
-
                 case 1:
+                    makePermitFalse();
+                    break;
+
+                case 2:
                     if (coin < 0.5)
                     {
                         makePermitFalse();
@@ -180,12 +190,16 @@ public class Passenger : MonoBehaviour
             double coin = coinFlip();
             switch (level)
             {
+                //tutorial
                 case 0:
                     smoking = true;
                     break;
 
-
                 case 1:
+                    smoking = true;
+                    break;
+
+                case 2:
                     if (coin < 0.5)
                     {
                         smoking = true;
@@ -219,7 +233,8 @@ public class Passenger : MonoBehaviour
         //will show the description of the passenger made
         //debugInfo();
     }
-    
+  
+
     private void setPermit()
     {
         
@@ -395,7 +410,7 @@ public class Passenger : MonoBehaviour
 
         public string ToText()
         {
-            return expiredTime.ToString() + " \n validity periode : " + validityPeriod;
+            return "exp:" + expiredTime.ToString() + " \n validity periode : " + validityPeriod + "h";
         }
         public Ticket(bool present, DateTime expiredTime, float validityPeriod)
         {
@@ -416,7 +431,7 @@ public class Passenger : MonoBehaviour
         public string ToText() 
         {
             return name + " " + surname + "\n" +
-                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
+                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"days";
         }
         public Subscription(bool present, string name, string surname,
             DateTime expiredTime, float validityPeriod)
@@ -440,7 +455,7 @@ public class Passenger : MonoBehaviour
         public string ToText()
         {
             return name + " " + surname + " - " + age + "\n" +
-                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
+                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"year";
         }
         public Passeport(bool present, string name, string surname, int age,
             DateTime expiredTime, float validityPeriod)
@@ -465,7 +480,7 @@ public class Passenger : MonoBehaviour
         public string ToText()
         {
             return name + " " + surname + " - " + age + "\n" +
-                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
+                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"year";
         }
         public ID(bool present, string name, string surname, int age,
             DateTime expiredTime, float validityPeriod)
@@ -491,7 +506,7 @@ public class Passenger : MonoBehaviour
         public string ToText()
         {
             return name + " " + surname + "\n" +
-                expiredTime.ToString() + " \n validity periode : " + validityPeriod;
+                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"h";
         }
         public Autorisation(bool present, string name,
             string surname, DateTime expiredTime, float validityPeriod)

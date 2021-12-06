@@ -115,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8544976337864010095
 Transform:
   m_ObjectHideFlags: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482270a5b4cde9940b5d5a3829f677be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBeenFined: 0
   passengerName: 
   passengerSurname: 
   passengerAge: 0
@@ -307,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8544976338729437266
 Transform:
   m_ObjectHideFlags: 0

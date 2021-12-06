@@ -18,15 +18,15 @@ public class BetweenLevels : MonoBehaviour
         if(GameManager.currentLevel >= 1)
         {
             personalityText.text = "Alignement :\n";
-            personalityText.text += "* Proparti : " + (GameManager.propartiAlignment > 0 ? "Aidé" : "Ignoré") + "\n";
+            personalityText.text += "* Proparti : " + (GameManager.propartiAlignment > 0 ? "Aidé" : (GameManager.propartiAlignment < 0 ? "Bloqué" : "Ignoré")) + "\n";
         }
         if(GameManager.currentLevel >= 2)
         {
-            personalityText.text += "* Migrant : " + (GameManager.migrantAlignment > 0 ? "Aidé" : "Ignoré") + "\n";
+            personalityText.text += "* Migrant : " + (GameManager.migrantAlignment > 0 ? "Aidé" : (GameManager.migrantAlignment < 0 ? "Bloqué" : "Ignoré")) + "\n";
         }
         if(GameManager.currentLevel >= 3)
         {
-            personalityText.text += "* Resistante : " + (GameManager.resistanteAlignment > 0 ? "Aidé" : "Ignoré") + "\n";
+            personalityText.text += "* Resistante : " + (GameManager.resistanteAlignment > 0 ? "Aidé" : (GameManager.resistanteAlignment < 0 ? "Bloqué" : "Ignoré")) + "\n";
         }
 
         nextLevelButton.onClick.AddListener(() => {

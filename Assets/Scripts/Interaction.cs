@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Interaction : MonoBehaviour
 {  
     public bool isInteracting;
+    public GameObject interractedPassenger;
 
     public Passenger closestPassenger;
 
@@ -43,12 +44,6 @@ public class Interaction : MonoBehaviour
                 Debug.Log("Leave Interact");
                 EndInteract();
                 isInteracting = false;
-            }
-            //debug purpose only, the pause menu will be there
-            else if (Input.GetButtonDown("Pause Menu"))
-            {
-                Debug.Log("Pause");
-                SceneManager.LoadScene("LevelSelection");
             }
         }
         else
@@ -110,17 +105,17 @@ public class Interaction : MonoBehaviour
     void Interact()
     {
         animator.SetTrigger("Interact");
-        Passenger passenger = closestPassenger.GetComponent<Passenger>();
-        if(!passenger.isSpecial())
+        Passenger interractedPassenger = closestPassenger.GetComponent<Passenger>();
+        if(!interractedPassenger.isSpecial())
         {
-            dialogueManager.StartDialogue(passenger.dialogue);
+            dialogueManager.StartDialogue(interractedPassenger.dialogue);
             passengerControls.gameObject.SetActive(true);
-            passengerControls.Set(passenger);
+            passengerControls.Set(interractedPassenger);
         }
         else
         {
             //cast passenger to special passenger
-            SpecialPassenger spassenger = passenger as SpecialPassenger;
+            SpecialPassenger spassenger = interractedPassenger as SpecialPassenger;
             spassenger.canMove = false;
             dialogueManager.StartSpecialDialogue(spassenger.dialogue);
         }

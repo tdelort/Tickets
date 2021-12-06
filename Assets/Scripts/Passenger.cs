@@ -38,7 +38,6 @@ public class Passenger : MonoBehaviour
     public bool bulky = false;
     public bool mustBeGreen = false;
     public bool mustBeNotGreen = false;
-    public bool Special = false;
 
     public Dialogue dialogue;
     
@@ -234,13 +233,7 @@ public class Passenger : MonoBehaviour
         //will show the description of the passenger made
         //debugInfo();
     }
-    
-    public void InitSpecial()
-    {
-        Init(false, false);
-        setSprite(); 
-        setDialogue(true);
-    }   
+  
 
     private void setPermit()
     {
@@ -407,11 +400,6 @@ public class Passenger : MonoBehaviour
         return UnityEngine.Random.Range(0f, 1f);
     }
 
-
-    private void setDialogue(bool Special)
-    {
-        //TODO Fill this section
-    }
 
     public struct Ticket
     {

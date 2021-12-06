@@ -50,7 +50,7 @@ public class SpecialPassenger : Passenger
 
     private void onDialogueEnd(SpecialPassengerType type, int val)
     {
-        Debug.Log("Dialogue ended : " + type + " " + val);
+        //Debug.Log("Dialogue ended : " + type + " " + val);
         switch (type)
         {
             case SpecialPassengerType.MIGRANT:

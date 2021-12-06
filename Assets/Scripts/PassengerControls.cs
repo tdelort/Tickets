@@ -73,7 +73,7 @@ public class PassengerControls : MonoBehaviour
             {   
                 if(hit.collider.gameObject.CompareTag("FineButton"))
                 {
-                    Debug.Log("Hit fine button");
+                    //Debug.Log("Hit fine button");
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.FINE_SELECTED);
                     fine = true;
                     passenger.dialogue.SetDialogue(Sentence.SentenceType.PLEAD);
@@ -82,7 +82,7 @@ public class PassengerControls : MonoBehaviour
                 
                 if(fine && hit.collider.gameObject.CompareTag("ValidateButton"))
                 {
-                    Debug.Log("FINE VALIDATED");
+                    //Debug.Log("FINE VALIDATED");
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
                     // Add acion to fine the passenger here
                     fine = false;
@@ -97,7 +97,7 @@ public class PassengerControls : MonoBehaviour
 
                 if(fine && hit.collider.gameObject.CompareTag("CancelButton"))
                 {
-                    Debug.Log("FINE CANCELLED");
+                    //Debug.Log("FINE CANCELLED");
                     SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
                     fine = false;
                 }

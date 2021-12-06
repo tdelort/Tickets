@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
     //in sec
     private float internalClock = 0f;
     private float travelTime = 0f;
-    public float timeBetweenStops = 8f;
+    public float timeBetweenStops;
 
     public GameObject passengerPrefab;
     private List<List<GameObject>> passengerWaves = new List<List<GameObject>>();
@@ -78,7 +78,6 @@ public class LevelController : MonoBehaviour
         //if has made a pause of X sec at station and not last station, leave station
         if (isMoving == false && nbStops < 4 && internalClock > 4)
         {
-            Debug.Log("Train departure");
             bb.Leave();
             isMoving = true;
             internalClock = 0;
@@ -87,8 +86,6 @@ public class LevelController : MonoBehaviour
         //if has moved for X sec, arrive at station
         else if (isMoving == true && internalClock > timeBetweenStops)
         {
-            Debug.Log("Train stopping");
-
             isMoving = false;
             internalClock = 0;
             arriving = true;
@@ -117,13 +114,13 @@ public class LevelController : MonoBehaviour
             passengers.Add(passenger);
             Vector2 endPosition = new Vector2(Random.Range(leftBound.position.x, rightBound.position.x), spawnPoint.y);
             passenger.GetComponent<Passenger>().position(spawnPoint, endPosition);
-            if (nbNIOPass > 0)
+            if (NIO > 0)
             {
                 //create a passenger not in order
                 passenger.GetComponent<Passenger>().Init(false, false);
                 NIO--;
             }
-            else if (nbIlePass > 0)
+            else if (ILE > 0)
             {
                 //create a passenger that do illegal
                 passenger.GetComponent<Passenger>().Init(true, true);
@@ -168,7 +165,6 @@ public class LevelController : MonoBehaviour
 
     private void atStation()
     {
-        Debug.Log("Train at station");
         pb.arrivedNextStop();
         //make the passengers on board have a chance to leave
         if (nbStops < 3)

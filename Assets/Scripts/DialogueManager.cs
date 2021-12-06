@@ -39,13 +39,13 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence.text);
         }
-        Debug.Log(sentences.Count);
+        //Debug.Log(sentences.Count);
         displayNextSentence();
         inDialogue = true;
     }
     public void displayNextSentence()
     {
-        Debug.Log("displayNextSentence");
+        //Debug.Log("displayNextSentence");
         //if dialog tab is open
         if (animator.GetBool("IsOpen"))
         {
@@ -109,18 +109,18 @@ public class DialogueManager : MonoBehaviour
     private void Answer(int answer, SpecialDialogue dialogue)
     {
         int next = dialogue.dialogue[currentSentence].answers[answer].next;
-        Debug.Log("Answer: " + answer + " Next: " + next);
+        //Debug.Log("Answer: " + answer + " Next: " + next);
         if (next < 0)
         {
-            Debug.Log("Negative : " + next);
+            //Debug.Log("Negative : " + next);
             ResetButtons();
             EndDialogue();
             dialogue.onDialogueEnd.Invoke(next);
-            Debug.Log("End of the dialogue");
+            //Debug.Log("End of the dialogue");
         }
         else
         {
-            Debug.Log("Positive : " + next);
+            //Debug.Log("Positive : " + next);
             // Setting up buttons
             SetButtonsForDialogue(dialogue, next);
             currentSentence = next;

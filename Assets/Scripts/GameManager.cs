@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("##### Starting Level " + level + " #####");
         if(level > 3)
         {
-            SceneManager.LoadScene("MainMenu");
+            ReturnToMainMenu();
             //SceneManager.LoadScene("End");
         }
         else if(level == 0)

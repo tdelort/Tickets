@@ -18,16 +18,18 @@
 |---|---|---|
 | Tristan Delort | En tant que joueur, je veux avoir un récapitulatif de mon aventure <br>[x] Système de sauvegarde de l'avancement dans le jeu <br>[x] Affichage du score, des choix effectués, et de l'orientation (pro-parti, resistant, etc) à la fin du jeu | 100% |
 | Tristan Delort | En tant que joueur, je veux être guidé dans mon apprentissage du jeu pour ne passer à côté d'aucun aspect important de ma partie <br>[x] Créer un niveau 0 avec des règles simplifiées <br>[x] Informer le joueur des différents contrôles et mecanismes du jeu | 100% |
-| Wajih Alaoui | En tant que joueur, je veux être capable d'écouter les musiques et sons durant le jeu <br>[x] Création / Téléchargement des musiques et sons <br>[] Ajout des musiques et sons dans le jeu | 100% |
-| Personne | En tant que joueur, je veux pouvoir modifier le volume de mon jeu, le langage et la résolution, ou autres options diverses <br>[] Création du menu <br>[] Implémentation de la logique pour le menu | 100% |
-| JSP KI | En tant que joueur, je veux avoir des dialogues interessants et non-redondants avec les usagers. <br>[x] Des lignes de dialogues sont écrites pour les passagers lambdas <br>[x] Des lignes de dialogues sont écrites pour les passagers spéciaux | 100% |
+| Wajih Alaoui | En tant que joueur, je veux être capable d'écouter les musiques et sons durant le jeu <br>[x] Création / Téléchargement des musiques et sons <br>[x] Ajout des musiques et sons dans le jeu | 100% |
+| | En tant que joueur, je veux pouvoir modifier le volume de mon jeu, le langage et la résolution, ou autres options diverses <br>[] Création du menu <br>[] Implémentation de la logique pour le menu | 0% |
+| Un peu tout le monde | En tant que joueur, je veux avoir des dialogues interessants et non-redondants avec les usagers. <br>[x] Des lignes de dialogues sont écrites pour les passagers lambdas <br>[x] Des lignes de dialogues sont écrites pour les passagers spéciaux | 100% |
+| Loïs Deniau | En tant que joueur, je veux savoir où j'en suis dans le niveau. <br>[x] Je peux voir le nombre d'arrêt fait et restant. <br>[x] Je peux savoir quand j'arriverais au prochain arrêt | 100% |
 
 Taches rajoutées au cour du sprint :  
-| Nom | User story | Avancement |
-|---|---|---|
-| Lucien Mocrette | Ajout d'un journal faisant un récapitulatif de l'histoire du monde avant chaque niveaux | 100% |
-| Loïs Deniau | Refactorisation du LevelController pour pouvoir supporter les nouvelles fonctionnalitées du jeu | 100% |
-| Hugo Deniau | Animation du fond derrière le metro | 100% |
+| Nom | User story |
+|---|---|
+| Lucien Mocrette | Ajout d'un journal faisant un récapitulatif de l'histoire du monde avant chaque niveaux |
+| Loïs Deniau | Refactorisation du LevelController pour pouvoir supporter les nouvelles fonctionnalitées du jeu |
+| Tristan Delort & Loïs Deniau | Élimitation de bugs |
+| Hugo Deniau | Animation du fond derrière le metro |
 
 ## Titre des nouvelles User Stories
 
@@ -62,7 +64,7 @@ Taches rajoutées au cour du sprint :
 |           | :(    | :&#124;   | :)    | :D    |
 |:---------:|:-----:|:---------:|:-----:|:-----:|
 | Wajih     |  *.*  |  *.*      |  *X*  |  *.*  |
-| Tristan   |  *.*  |  *X*      |  *.*  |  *.*  |
+| Tristan   |  *.*  |  *.*      |  *.*  |  *X*  |
 | Hugo      |  *.*  |  *.*      |  *X*  |  *.*  |
 | Loïs      |  *.*  |  *.*      |  *X*  |  *.*  |
 | Lucien    |  *.*  |  *.*      |  *X*  |  *.*  |

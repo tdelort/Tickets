@@ -205,7 +205,7 @@ public class PassengerControls : MonoBehaviour
         //always need tickets (level 0 and 1)
         obj.GetComponentInChildren<TextMesh>().text += "- " + rules[0] + "\n";
         //from level 2, add rule for each level
-        for (int i = 2; i <= GameManager.currentLevel; i++)
+        for (int i = 1; i <= GameManager.currentLevel-1; i++)
         {
             obj.GetComponentInChildren<TextMesh>().text += "- " + rules[i] + "\n";
         }

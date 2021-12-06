@@ -53,6 +53,11 @@ public class Passenger : MonoBehaviour
         elapsedTime = 0;
         startPosition = start;
         endPosition = end;
+    }
+
+    public void arrive()
+    {
+        this.gameObject.SetActive(true);
         movingIn = true;
     }
     public void leave()

@@ -923,6 +923,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625970942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6567764749090596119, guid: 376954e33839ed44e811416025c21ffc, type: 3}
+  m_PrefabInstance: {fileID: 7229731465049645265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14cb65395a96ddc4787fb8e119489118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1627179528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1021,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 6e742edec9f47e04aa372f63b1dbd3be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1203,7 +1214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
-  numberOfPassenger: 0
+  nbStops: 0
+  arriving: 0
+  timeBetweenStops: 5
   passengerPrefab: {fileID: 8544976337864010089, guid: 8679343157b4ff643ae0bf6fa0187534, type: 3}
   interaction: {fileID: 813439627}
   spawnPoints:
@@ -1215,6 +1228,7 @@ MonoBehaviour:
   migrantPrefab: {fileID: 9218622954208388012, guid: a60a30816e80d4846b04078167a4748e, type: 3}
   resistantePrefab: {fileID: 7988357035705873337, guid: 06eb16a08670fbd4c87720b32b342a18, type: 3}
   bb: {fileID: 2015444797}
+  pb: {fileID: 1625970942}
 --- !u!4 &2127364800
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,23 +1256,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4687289395805226684, guid: dd6b287ba83bd1346839f9049f724de7, type: 3}
       propertyPath: m_SortingOrder
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4687289396490810792, guid: dd6b287ba83bd1346839f9049f724de7, type: 3}
       propertyPath: m_SortingOrder
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4881982961901882351, guid: dd6b287ba83bd1346839f9049f724de7, type: 3}
       propertyPath: m_SortingOrder
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4881982962554173691, guid: dd6b287ba83bd1346839f9049f724de7, type: 3}
       propertyPath: m_SortingOrder
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5519406613585780283, guid: dd6b287ba83bd1346839f9049f724de7, type: 3}
       propertyPath: m_SortingOrder
-      value: -3
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6860998895332745473, guid: dd6b287ba83bd1346839f9049f724de7, type: 3}
       propertyPath: m_Name

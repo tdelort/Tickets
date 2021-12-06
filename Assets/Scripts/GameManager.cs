@@ -69,9 +69,10 @@ public class GameManager : MonoBehaviour
         currentLevel = level;
         maxLevel = currentLevel > maxLevel ? currentLevel : maxLevel;
 
-        NbPassenger = 8;
+        //must be NbPassenger >= 3
+        NbPassenger = 12;
         NbNotInOrderPassenger = 4;
-        NbIlegalActionPassenger = 4;
+        NbIlegalActionPassenger = 0;
 
         switch (level)
         {
@@ -129,7 +130,8 @@ public class GameManager : MonoBehaviour
         ResetGame();
         SaveGame(); //To erase the old save
         Debug.Log("New Game");
-        startLevel(0);
+        //TODO remettre à zero
+        startLevel(1);
     }
 
     public static void ContinueGame()

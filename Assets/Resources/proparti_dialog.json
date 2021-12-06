@@ -6,7 +6,7 @@
             "answers" :
             [
                 {
-                    "text": "Vous me rappellez quelqu'un, je me trompe ?",
+                    "text": "Vous me rappellez quelqu'un...",
                     "next": 1
                 },
                 {

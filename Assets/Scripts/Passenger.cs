@@ -35,6 +35,7 @@ public class Passenger : MonoBehaviour
     public bool bulky = false;
     public bool mustBeGreen = false;
     public bool mustBeNotGreen = false;
+    public bool Special = false;
 
     public Dialogue dialogue;
 
@@ -137,6 +138,13 @@ public class Passenger : MonoBehaviour
         setSprite();
     }
     
+    public void InitSpecial()
+    {
+        Init(false, false);
+        setSprite(); 
+        setDialogue(true);
+    }   
+
     private void setPermit()
     {
         
@@ -266,6 +274,11 @@ public class Passenger : MonoBehaviour
     }
 
     private void setSprite()
+    {
+        //TODO Fill this section
+    }
+
+    private void setDialogue(bool Special)
     {
         //TODO Fill this section
     }

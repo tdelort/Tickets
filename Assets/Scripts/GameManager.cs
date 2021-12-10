@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
     public static void CreditsMenu()
     {
         Debug.Log("Credits menu");
-        //SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("Credits");
     }
 
     public static void QuitGame()

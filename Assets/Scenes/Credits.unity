@@ -814,8 +814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 65, y: -115}
-  m_SizeDelta: {x: -170, y: -135}
+  m_AnchoredPosition: {x: 75, y: -115}
+  m_SizeDelta: {x: -150, y: -135}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &441368681
 MonoBehaviour:
@@ -895,8 +895,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 65, y: -115}
-  m_SizeDelta: {x: -170, y: -135}
+  m_AnchoredPosition: {x: 75, y: -115}
+  m_SizeDelta: {x: -150, y: -135}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &543173644
 MonoBehaviour:
@@ -931,9 +931,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: 'Roles :
+  m_Text: 'GameDesign
 
-    Bla bla bla'
+    Affichage Dialogues
+
+    Graphismes
+
+    Boucle de Jeu'
 --- !u!222 &543173645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1282,8 +1286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 65, y: -115}
-  m_SizeDelta: {x: -170, y: -135}
+  m_AnchoredPosition: {x: 75, y: -115}
+  m_SizeDelta: {x: -150, y: -135}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &644643657
 MonoBehaviour:
@@ -1363,8 +1367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 65, y: -115}
-  m_SizeDelta: {x: -170, y: -135}
+  m_AnchoredPosition: {x: 75, y: -115}
+  m_SizeDelta: {x: -150, y: -135}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &663473432
 MonoBehaviour:
@@ -1442,8 +1446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 65, y: -115}
-  m_SizeDelta: {x: -170, y: -135}
+  m_AnchoredPosition: {x: 75, y: -115}
+  m_SizeDelta: {x: -150, y: -135}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &775178058
 MonoBehaviour:

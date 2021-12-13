@@ -28,7 +28,7 @@ public class NewsBehaviour : MonoBehaviour
         {
             headLine.GetComponent<TextMesh>().text = "L' ANCIEN PARTI S'ORGANISE";
             text1.GetComponent<TextMesh>().text = "Il a été découvert que l'ancien \nparti s'organise en groupe afin \nde mener des actions \nterroristes contre le parti en \nplace. Il est demandé de \nreporter à la police toutes \npersonnes ou activités \nsuspectes afin de prévenir \ntous problèmes.";
-            text2.GetComponent<TextMesh>().text = "Je ne me rappelle plus de la nouvelle règle et ce n'est pas écrit dans le GDD. écrire un texte a mettre ici";
+            text2.GetComponent<TextMesh>().text = "Les règles dictées hier ainsi qu'avant-hier risquent de rester jusqu'à nouvel ordre et un renforcement des contrôles sera effectués dans les trains. Il y a interdiction d'entrerdans le pays jusqu'à nouvel ordre";
             text3.GetComponent<TextMesh>().text = "Les actions d'hier et d'avant-hier a pu \npermettre de nettoyer d'autres quartiers \net d'arretter d'autres personnes illégales. ";
         }
         

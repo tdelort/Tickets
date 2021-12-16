@@ -63,6 +63,9 @@ public class Passenger : MonoBehaviour
     }
     public void leave()
     {
+        //make passenger not interactable
+        hasBeenFined = true;
+
         elapsedTime = 0;
         movingOut = true;
     }

@@ -135,7 +135,7 @@ public class PassengerControls : MonoBehaviour
                     List<string> rules = new List<string>(){
                         "Titre de transport",
                         "Pièce d'identité",
-                        "Autorisation de sortie",
+                        "",
                     };
                     SetRuleList(co.go, rules);
                     break;

@@ -37,13 +37,19 @@ public class Interaction : MonoBehaviour
     void Update()
     {
 
-        if(isInteracting)
+        if (Input.GetButtonDown("Next Sentence"))
+        {
+            Debug.Log("Next Sentence");
+            dialogueManager.displayNextSentence();
+        }
+
+        if (isInteracting)
         {
             if(Input.GetButtonDown("Interact") || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
             {
                 Debug.Log("Leave Interact");
                 EndInteract();
-                isInteracting = false;
+                
             }
         }
         else
@@ -51,14 +57,8 @@ public class Interaction : MonoBehaviour
             if(closestPassenger!=null && !closestPassenger.hasBeenFined && Input.GetButtonDown("Interact"))
             {
                 Debug.Log("Interact");
-                isInteracting = true;
                 Interact();
             }    
-            else if (Input.GetButtonDown("Next Sentence"))
-            {
-                Debug.Log("Next Sentence");
-                dialogueManager.displayNextSentence();
-            }
         }
 
     }
@@ -104,6 +104,7 @@ public class Interaction : MonoBehaviour
 
     void Interact()
     {
+        isInteracting = true;
         animator.SetTrigger("Interact");
         Passenger interractedPassenger = closestPassenger.GetComponent<Passenger>();
         if(!interractedPassenger.isSpecial())
@@ -126,5 +127,6 @@ public class Interaction : MonoBehaviour
         Debug.Log("Ending interaction");
         passengerControls.gameObject.SetActive(false);
         dialogueManager.EndDialogue();
+        isInteracting = false;
     }
 }

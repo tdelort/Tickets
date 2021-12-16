@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     public Animator animator;
     public bool inDialogue = false;
+    private Coroutine typingRoutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,8 +53,9 @@ public class DialogueManager : MonoBehaviour
             if (sentences.Count > 0)
             {
                 string sentence = sentences.Dequeue();
-                //StopAllCoroutines();
-                StartCoroutine(TypeSentence(sentence));
+                if (typingRoutine != null)
+                    StopCoroutine(typingRoutine);
+                typingRoutine = StartCoroutine(TypeSentence(sentence));
             }
             else
             {

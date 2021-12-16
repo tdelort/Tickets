@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Interaction : MonoBehaviour
 {  
     public bool isInteracting;
-    public GameObject interractedPassenger;
+    public Passenger interractedPassenger;
 
     public Passenger closestPassenger;
 
@@ -106,7 +106,7 @@ public class Interaction : MonoBehaviour
     {
         isInteracting = true;
         animator.SetTrigger("Interact");
-        Passenger interractedPassenger = closestPassenger.GetComponent<Passenger>();
+        interractedPassenger = closestPassenger.GetComponent<Passenger>();
         if(!interractedPassenger.isSpecial())
         {
             dialogueManager.StartDialogue(interractedPassenger.dialogue);
@@ -128,5 +128,6 @@ public class Interaction : MonoBehaviour
         passengerControls.gameObject.SetActive(false);
         dialogueManager.EndDialogue();
         isInteracting = false;
+        interractedPassenger = null;
     }
 }

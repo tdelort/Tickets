@@ -1534,7 +1534,7 @@ MonoBehaviour:
   isMoving: 0
   nbStops: 0
   arriving: 0
-  timeBetweenStops: 20
+  timeBetweenStops: 40
   passengerPrefab: {fileID: 8544976337864010089, guid: 8679343157b4ff643ae0bf6fa0187534, type: 3}
   interaction: {fileID: 813439627}
   spawnPoints:

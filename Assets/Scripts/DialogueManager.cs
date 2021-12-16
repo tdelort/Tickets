@@ -88,7 +88,11 @@ public class DialogueManager : MonoBehaviour
 
     private void SetButtonsForDialogue(SpecialDialogue sd, int a)
     {
-        for(int i = 0; i < sd.dialogue[a].answers.Length; i++)
+        for (int i = 0; i < 3; i++)
+        {
+            buttons[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < sd.dialogue[a].answers.Length; i++)
         {
             int id = sd.dialogue[a].answers.Length - i - 1;
             buttons[2 - i].onClick.RemoveAllListeners();

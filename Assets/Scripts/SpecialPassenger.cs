@@ -70,6 +70,10 @@ public class SpecialPassenger : Passenger
                     GameManager.resistanteAlignment = -1;
                     GameManager.score += 100;
                 }
+                else if (val == -3)
+                {
+                    GameManager.resistanteAlignment = -2;
+                }
                 break;
             case SpecialPassengerType.PROPARTI:
                 if (val == -1)

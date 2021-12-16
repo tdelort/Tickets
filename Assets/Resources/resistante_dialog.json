@@ -17,12 +17,12 @@
         },
         {
             "id": 1,
-            "text": "Vous êtes de notre camp ou vous êtes à la botte du régime ?",
+            "text": "Je suis dans la résistance, ce régime nous opresse !",
             "answers" :
             [
                 {
-                    "text": "C'est risqué, mais je vous suis !",
-                    "next": -1
+                    "text": "Qu'est ce que tu peux me proposer ?",
+                    "next": 4
                 },
                 {
                     "text": "Papiers s'il vous plait",
@@ -40,12 +40,67 @@
             "answers" :
             [
                 {
-                    "text": "SECURITEE !",
-                    "next": -2
+                    "text": "Qui êtes vous ?",
+                    "next": 1
                 },
                 {
-                    "text": "Que me voulez vous ?",
-                    "next": 1
+                    "text": "SECURITEE !",
+                    "next": -2
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "Non, je ne veux pas fuir ! Mais toi si tu veux fuir le pays je peux t'aider ",
+            "answers" :
+            [
+                {
+                    "text": "C'est d'accord !",
+                    "next": -1
+                },
+                {
+                    "text": "Laisse moi réflechir...",
+                    "next": 5
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "text": "Tu veux nous rejoindre dans la résistance ? ",
+            "answers" :
+            [
+                {
+                    "text": "Faisons ça !",
+                    "next": -3
+                },
+                {
+                    "text": "Laisse moi réflechir...",
+                    "next": 5
+                }
+                ,
+                {
+                    "text": "SECURITEE !",
+                    "next": -2
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "text": "J'ai pas beaucoup de temps, il faut que je file, dis moi vite ce que tu veux !",
+            "answers" :
+            [
+                
+                {
+                    "text": "Tu cherche à fuir ?",
+                    "next": 3
+                },
+                {
+                    "text": "Tu fais parti d'un groupe de résistants",
+                    "next": 4
+                },
+                {
+                    "text": "Papiers s'il vous plait !",
+                    "next": 2
                 }
             ]
         }

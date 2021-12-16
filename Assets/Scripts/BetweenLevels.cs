@@ -31,15 +31,22 @@ public class BetweenLevels : MonoBehaviour
         if (GameManager.currentLevel >= 1)
         {
             
-            personalityText.text += "- Usager proparti fraudeur : " + (GameManager.propartiAlignment > 0 ? "Aidé" : (GameManager.propartiAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
+            personalityText.text += "- Usager proparti fraudeur : " + 
+                (GameManager.propartiAlignment > 0 ? "Aidé" : 
+                (GameManager.propartiAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
         }
         if(GameManager.currentLevel >= 2)
         {
-            personalityText.text += "- Usager Migrant fraudeur: " + (GameManager.migrantAlignment > 0 ? "Aidé" : (GameManager.migrantAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
+            personalityText.text += "- Usager Migrant fraudeur: " + 
+                (GameManager.migrantAlignment > 0 ? "Aidé" : 
+                (GameManager.migrantAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
         }
         if(GameManager.currentLevel >= 3)
         {
-            personalityText.text += "- Usager Resistante fraudeuse: " + (GameManager.resistanteAlignment > 0 ? "Aidé" : (GameManager.resistanteAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
+            personalityText.text += "- Usager Resistante fraudeuse: " + 
+                (GameManager.resistanteAlignment > 0 ? "été Aidé" : 
+                (GameManager.resistanteAlignment < 0 ? 
+                (GameManager.resistanteAlignment == -1 ? "Arrêté" : "Rejoins") : "Ignoré")) + "\n";
         }
         if (score < scorePassage)
         {

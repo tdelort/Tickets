@@ -57,19 +57,28 @@ public class SpecialPassenger : Passenger
                 if (val == -1)
                     GameManager.migrantAlignment = 1;
                 else if (val == -2)
+                {
                     GameManager.migrantAlignment = -1;
+                    GameManager.score += 100;
+                }
                 break;
             case SpecialPassengerType.RESISTANTE:
                 if (val == -1)
                     GameManager.resistanteAlignment = 1;
                 else if (val == -2)
+                {
                     GameManager.resistanteAlignment = -1;
+                    GameManager.score += 100;
+                }
                 break;
             case SpecialPassengerType.PROPARTI:
                 if (val == -1)
                     GameManager.propartiAlignment = 1;
                 else if (val == -2)
+                {
                     GameManager.propartiAlignment = -1;
+                    GameManager.score += 100;
+                }
                 break;
         }
     }

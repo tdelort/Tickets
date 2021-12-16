@@ -38,6 +38,7 @@ public class PassengerControls : MonoBehaviour
     private GameObject watch;
     private DateTime startTime;
     private TimeSpan difference;
+    private GameObject fineMachine;
     [SerializeField] private float originalZ = 0;
 
     private int score = 0;
@@ -74,7 +75,7 @@ public class PassengerControls : MonoBehaviour
                 if(hit.collider.gameObject.CompareTag("FineButton"))
                 {
                     //Debug.Log("Hit fine button");
-                    SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.FINE_SELECTED);
+                    SetFineMachine(fineMachine, FineMachineState.FINE_SELECTED);
                     fine = true;
                     passenger.dialogue.SetDialogue(Sentence.SentenceType.PLEAD);
                     dialogueManager.StartDialogue(passenger.dialogue);
@@ -83,7 +84,7 @@ public class PassengerControls : MonoBehaviour
                 if(fine && hit.collider.gameObject.CompareTag("ValidateButton"))
                 {
                     //Debug.Log("FINE VALIDATED");
-                    SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
+                    SetFineMachine(fineMachine, FineMachineState.IDLE);
                     // Add acion to fine the passenger here
                     fine = false;
                     
@@ -98,7 +99,7 @@ public class PassengerControls : MonoBehaviour
                 if(fine && hit.collider.gameObject.CompareTag("CancelButton"))
                 {
                     //Debug.Log("FINE CANCELLED");
-                    SetFineMachine(hit.collider.transform.parent.gameObject, FineMachineState.IDLE);
+                    SetFineMachine(fineMachine, FineMachineState.IDLE);
                     fine = false;
                 }
             }
@@ -139,6 +140,7 @@ public class PassengerControls : MonoBehaviour
                     SetRuleList(co.go, rules);
                     break;
                 case ControlObjectType.FINEMACHINE:
+                    fineMachine = co.go;
                     SetFineMachine(co.go, FineMachineState.IDLE);
                     break;
             } 

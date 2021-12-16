@@ -6,32 +6,58 @@ using UnityEngine.UI;
 public class BetweenLevels : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text scoreNeedText;
     [SerializeField] private Text personalityText;
     [SerializeField] private Button nextLevelButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Image endbg;
+
+    public int NbFineNeedForFinishLevel = 2;
+
+    private int score;
+    private int scorePassage;
 
     void Start()
     {
-        scoreText.text = "Score: " + GameManager.score.ToString();
+        score = GameManager.score;
+        //tuto + level
+        scorePassage = 100 + GameManager.currentLevel * NbFineNeedForFinishLevel * 100;
 
-        personalityText.text = "";
-        if(GameManager.currentLevel >= 1)
+        scoreText.text = score.ToString();
+
+        scoreNeedText.text = scorePassage.ToString();
+
+        personalityText.text = "Les faits marquants de votre aventure :\n";
+        if (GameManager.currentLevel >= 1)
         {
-            personalityText.text = "Alignement :\n";
-            personalityText.text += "* Proparti : " + (GameManager.propartiAlignment > 0 ? "Aidé" : (GameManager.propartiAlignment < 0 ? "Bloqué" : "Ignoré")) + "\n";
+            
+            personalityText.text += "- Usager proparti fraudeur : " + (GameManager.propartiAlignment > 0 ? "Aidé" : (GameManager.propartiAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
         }
         if(GameManager.currentLevel >= 2)
         {
-            personalityText.text += "* Migrant : " + (GameManager.migrantAlignment > 0 ? "Aidé" : (GameManager.migrantAlignment < 0 ? "Bloqué" : "Ignoré")) + "\n";
+            personalityText.text += "- Usager Migrant fraudeur: " + (GameManager.migrantAlignment > 0 ? "Aidé" : (GameManager.migrantAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
         }
         if(GameManager.currentLevel >= 3)
         {
-            personalityText.text += "* Resistante : " + (GameManager.resistanteAlignment > 0 ? "Aidé" : (GameManager.resistanteAlignment < 0 ? "Bloqué" : "Ignoré")) + "\n";
+            personalityText.text += "- Usager Resistante fraudeuse: " + (GameManager.resistanteAlignment > 0 ? "Aidé" : (GameManager.resistanteAlignment < 0 ? "Arrêté" : "Ignoré")) + "\n";
         }
-
-        nextLevelButton.onClick.AddListener(() => {
-            GameManager.startLevel(GameManager.currentLevel + 1);
-        });
+        if (score < scorePassage)
+        {
+            endbg.color = new Color(147f/255f, 62f / 255f, 60f / 255f, 255f / 255f);
+            nextLevelButton.transform.GetChild(0).GetComponent<Text>().text = "Recommencer";
+            nextLevelButton.onClick.AddListener(() => {
+                GameManager.startLevel(GameManager.currentLevel);
+            });
+        }
+        else
+        {
+            endbg.color = new Color(89f / 255f, 159f / 255f, 86f / 255f, 255f / 255f);
+            nextLevelButton.onClick.AddListener(() => {
+                GameManager.startLevel(GameManager.currentLevel + 1);
+            });
+            
+        }
+        
         mainMenuButton.onClick.AddListener(() => {
             GameManager.ReturnToMainMenu();
         });

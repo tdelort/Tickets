@@ -39,13 +39,13 @@ public class GameManager : MonoBehaviour
     public bool inPause = false;
 
 
+
     public static void startLevel(int level)
     {
         Debug.Log("##### Starting Level " + level + " #####");
         if(level > 3)
         {
-            ReturnToMainMenu();
-            //SceneManager.LoadScene("End");
+            EndScene();
         }
         else if(level == 0)
         {
@@ -152,6 +152,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Credits menu");
         SceneManager.LoadScene("Credits");
+    }
+
+    public static void EndScene()
+    {
+        Debug.Log("End Scene");
+        SceneManager.LoadScene("End");
     }
 
     public static void QuitGame()

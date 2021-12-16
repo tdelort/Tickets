@@ -62,10 +62,6 @@ public class BetweenLevels : MonoBehaviour
             GameManager.ReturnToMainMenu();
         });
 
-        if(GameManager.currentLevel >= GameManager.totalLevels)
-        {
-            nextLevelButton.gameObject.SetActive(false);
-        }
 
     }
 }

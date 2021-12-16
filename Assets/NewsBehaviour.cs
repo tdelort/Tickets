@@ -8,11 +8,9 @@ public class NewsBehaviour : MonoBehaviour
     public GameObject headLine;
     public Text text1, text2, text3;
     // Start is called before the first frame update
-    public int uichoice = 1;
     void Start()
     {
         int choice = GameManager.currentLevel;
-        choice = uichoice;
         if (choice == 1)
         {
             headLine.GetComponent<TextMesh>().text = "ELECTIONS PRESIDENTIELLES";

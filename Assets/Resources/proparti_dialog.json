@@ -37,10 +37,30 @@
             [
                 {
                     "text": "Ce n'est pas mon problème",
-                    "next": -2
+                    "next": 3
                 },
                 {
                     "text": "Quel rang ?",
+                    "next": 1
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "Attention ! Vous allez entendre parler de moi si vous me faite ça !",
+            "answers" :
+            [
+                {
+                    "text": "Voici votre amende",
+                    "next": -2
+                },
+                {
+                    "text": "je ne veux pas de problèmes, allez-y",
+                    "next": -1
+                }
+                ,
+                {
+                    "text": "Vous êtes qui ?",
                     "next": 1
                 }
             ]

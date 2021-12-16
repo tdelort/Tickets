@@ -55,33 +55,54 @@ public class SpecialPassenger : Passenger
         {
             case SpecialPassengerType.MIGRANT:
                 if (val == -1)
+                {
                     GameManager.migrantAlignment = 1;
+                    //can't re interract with
+                    hasBeenFined = true;
+                }
+                    
                 else if (val == -2)
                 {
                     GameManager.migrantAlignment = -1;
                     GameManager.score += 100;
+                    //can't re interract with
+                    hasBeenFined = true;
                 }
                 break;
             case SpecialPassengerType.RESISTANTE:
                 if (val == -1)
+                {
                     GameManager.resistanteAlignment = 1;
+                    //can't re interract with
+                    hasBeenFined = true;
+                }
                 else if (val == -2)
                 {
                     GameManager.resistanteAlignment = -1;
                     GameManager.score += 100;
+                    //can't re interract with
+                    hasBeenFined = true;
                 }
                 else if (val == -3)
                 {
                     GameManager.resistanteAlignment = -2;
+                    //can't re interract with
+                    hasBeenFined = true;
                 }
                 break;
             case SpecialPassengerType.PROPARTI:
                 if (val == -1)
+                {
                     GameManager.propartiAlignment = 1;
+                    //can't re interract with
+                    hasBeenFined = true;
+                }
                 else if (val == -2)
                 {
                     GameManager.propartiAlignment = -1;
                     GameManager.score += 100;
+                    //can't re interract with
+                    hasBeenFined = true;
                 }
                 break;
         }

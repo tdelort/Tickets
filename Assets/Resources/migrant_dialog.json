@@ -21,8 +21,8 @@
             "answers" :
             [
                 {
-                    "text": "Bien-sûr !",
-                    "next": -1
+                    "text": "Qu'est ce qui ne vas pas ?",
+                    "next": 3
                 },
                 {
                     "text": "Papiers s'il vous plait",
@@ -42,6 +42,21 @@
                 {
                     "text": "Que se passe-t-il ?",
                     "next": 1
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "C'est les policiers, ils ont mis ma mère au trou. Mais elle m'a dis de fuir et quitter le pays.",
+            "answers" :
+            [
+                {
+                    "text": "J'appelle la police, elle saura quoi faire.",
+                    "next": -2
+                },
+                {
+                    "text": "Ne t'inquiète pas, prends ca et file !",
+                    "next": -1
                 }
             ]
         }

@@ -480,7 +480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135838562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.54, y: 0, z: 0}
+  m_LocalPosition: {x: 4.54, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390923858}
@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5457963095224774744, guid: cffa00491faf8c74da61ce95a71ddabb, type: 3}
+  m_Sprite: {fileID: -1754661677325149611, guid: 2143e8480cfd9784198c8d46611117eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1293,7 +1293,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 75, y: -115}
-  m_SizeDelta: {x: -150, y: -135}
+  m_SizeDelta: {x: -150, y: -115}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &644643657
 MonoBehaviour:
@@ -1330,7 +1330,13 @@ MonoBehaviour:
     m_LineSpacing: 1.2
   m_Text: 'Roles :
 
-    Bla bla bla'
+    Interactions
+
+    Validations papiers
+
+    Spawn usagers
+
+    Menus'
 --- !u!222 &644643658
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1488,9 +1494,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: 'Roles :
-
-    Bla bla bla'
+  m_Text: "Roles :\nR\xE9daction dialogues\nMusique\nBruitages"
 --- !u!222 &775178059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1600,7 +1604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838497932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390923858}
@@ -3261,7 +3265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5457963095224774744, guid: cffa00491faf8c74da61ce95a71ddabb, type: 3}
+  m_Sprite: {fileID: -237487365671675732, guid: b9543e1f885f86a4a99876c3e3e645fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3585,7 +3589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077945190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.08, y: 0, z: 0}
+  m_LocalPosition: {x: 9.08, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390923858}

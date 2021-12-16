@@ -218,7 +218,8 @@ public class PassengerControls : MonoBehaviour
         //from level 2, add rule for each level
         for (int i = 1; i <= GameManager.currentLevel-1; i++)
         {
-            obj.GetComponentInChildren<TextMesh>().text += "- " + rules[i] + "\n";
+            if(rules[i] != "")
+                obj.GetComponentInChildren<TextMesh>().text += "- " + rules[i] + "\n";
         }
     }
 

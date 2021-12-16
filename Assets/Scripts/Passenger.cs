@@ -58,6 +58,7 @@ public class Passenger : MonoBehaviour
     public void arrive()
     {
         this.gameObject.SetActive(true);
+        elapsedTime = 0;
         movingIn = true;
     }
     public void leave()
@@ -232,6 +233,7 @@ public class Passenger : MonoBehaviour
         dialogue.SetDialogue(Sentence.SentenceType.GREETING);
         //will show the description of the passenger made
         //debugInfo();
+        desiredDuration = Mathf.Clamp(Mathf.Abs(startPosition.x - endPosition.x) / 3f + UnityEngine.Random.Range(-1f, 1f), 1f, 4f);
     }
   
 

@@ -12,10 +12,10 @@ public class SpecialPassenger : Passenger
         string name;
         switch (type)
         {
-            case SpecialPassengerType.MIGRANT: name = "Nom du Migrant"; break;
-            case SpecialPassengerType.RESISTANTE: name = "Nom de la Resistante"; break;
-            case SpecialPassengerType.PROPARTI: name = "Nom du Pro-parti"; break;
-            default: name = "ERROR"; break;
+            case SpecialPassengerType.MIGRANT: name = "Ciryl Elric"; break;
+            case SpecialPassengerType.RESISTANTE: name = "Kallen Uemata"; break;
+            case SpecialPassengerType.PROPARTI: name = "Omer Dalphonse"; break;
+            default: name = "I am probably a bug"; break;
         }
 
         dialogue.Init(name, type);

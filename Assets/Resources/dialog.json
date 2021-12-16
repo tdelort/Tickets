@@ -191,6 +191,174 @@
         {
             "text": "N'y aurait-il pas moyen de s'arranger ?",
             "type": 2
+        },
+        {
+            "text": "Voilà",
+            "type": 0
+        },
+        {
+            "text": "Voilà pour vous",
+            "type": 0
+        },
+        {
+            "text": "Je dois les avoir quelque part..",
+            "type": 0
+        },
+        {
+            "text": "Bonsoir",
+            "type": 0
+        },
+        {
+            "text": "Salut",
+            "type": 0
+        },
+        {
+            "text": "Hein ? Ah oui",
+            "type": 0
+        },
+        {
+            "text": "Quoi ? Oh !",
+            "type": 0
+        },
+        {
+            "text": "Qu'est ce qu... Ah oui",
+            "type": 0
+        },
+        {
+            "text": "Vous êtes qui ?",
+            "type": 0
+        },
+        {
+            "text": "Je ne mérite pas ça",
+            "type": 1
+        },
+        {
+            "text": "S'il vous plaît ! Rien qu'un avertissement !",
+            "type": 1
+        },
+        {
+            "text": "Je n'ai jamais fraudé !",
+            "type": 1
+        },
+        {
+            "text": "J'ai mes droits !",
+            "type": 1
+        },
+        {
+            "text": "Vous allez m'entendre !",
+            "type": 1
+        },
+        {
+            "text": "C'est une blague ?",
+            "type": 1
+        },
+        {
+            "text": "Sans déconner !",
+            "type": 1
+        },
+        {
+            "text": "Je sais pas ce qui me retiens..",
+            "type": 1
+        },
+        {
+            "text": "Je sais pas ce qui me retiens..",
+            "type": 3
+        },
+        {
+            "text": "Ah mince, je n'avais pas fait attention",
+            "type": 2
+        },
+        {
+            "text": "Un problème ? ah oui !",
+            "type": 2
+        },
+        {
+            "text": "C'est curieux.. Il m'avait semblé être en règle !",
+            "type": 2
+        },
+        {
+            "text": "C'est curieux.. Je suis pourtant en règle !",
+            "type": 3
+        },
+        {
+            "text": "Vous faîte votre travail, je comprends !",
+            "type": 2
+        },
+        {
+            "text": "Vous faîte mal votre travail ! C'est indécent !",
+            "type": 3
+        },
+        {
+            "text": "m'enfin !",
+            "type": 3
+        },
+        {
+            "text": "m'enfin !",
+            "type": 2
+        },
+        {
+            "text": "Aïe !",
+            "type": 2
+        },
+        {
+            "text": "Aïe !",
+            "type": 3
+        },
+        {
+            "text": "Vous êtes tous les mêmes",
+            "type": 2
+        },
+        {
+            "text": "Vous êtes tous les mêmes",
+            "type": 3
+        },
+        {
+            "text": "J'éspère qu'on va bien vous dégager toi et ta race !",
+            "type": 2
+        },
+        {
+            "text": "J'éspère qu'on va bien vous dégager toi et ta race !",
+            "type": 3
+        },
+        {
+            "text": "Vas bien te faire voir !",
+            "type": 2
+        },
+        {
+            "text": "Vas bien te faire voir !",
+            "type": 3
+        },
+        {
+            "text": "QUOI !!!",
+            "type": 2
+        },
+        {
+            "text": "QUOI !!!",
+            "type": 3
+        },
+        {
+            "text": "NON ! NON DE DIEU ! NON !",
+            "type": 2
+        },
+        {
+            "text": "NON ! NON DE DIEU ! NON !",
+            "type": 3
+        },
+        {
+            "text": "Hello !",
+            "type": 0
+        },
+        {
+            "text": "J'ai pas entendu.. Les écouteurs, vous dites ?",
+            "type": 0
+        },
+        {
+            "text": "Oui, je raccroche là je me fais controler, à plus",
+            "type": 0
+        },
+        {
+            "text": "Vous voulez ma photo ? Hein ? mes papiers ?",
+            "type": 0
         }
         ]
 }

@@ -160,7 +160,7 @@ public class PassengerControls : MonoBehaviour
         }
 
         obj.SetActive(true);
-        obj.GetComponentInChildren<TextMesh>().text = t.ToText();
+        obj.transform.GetChild(3).GetChild(1).GetComponentInChildren<TextMesh>().text = t.ToText();
     }
 
     private void SetSubscription(GameObject obj, Passenger.Subscription s)
@@ -172,7 +172,9 @@ public class PassengerControls : MonoBehaviour
         }
 
         obj.SetActive(true);
-        obj.GetComponentInChildren<TextMesh>().text = s.ToText();
+        obj.transform.GetChild(6).GetChild(1).GetComponentInChildren<TextMesh>().text = s.NameToText();
+        obj.transform.GetChild(1).GetChild(1).GetComponentInChildren<TextMesh>().text = s.DelToText();
+        obj.transform.GetChild(3).GetChild(1).GetComponentInChildren<TextMesh>().text = s.ValToText();
     }
     private void SetId(GameObject obj, Passenger.ID i)
     {
@@ -183,7 +185,10 @@ public class PassengerControls : MonoBehaviour
         }
 
         obj.SetActive(true);
-        obj.GetComponentInChildren<TextMesh>().text = i.ToText();
+        obj.transform.GetChild(1).GetChild(1).GetComponentInChildren<TextMesh>().text = i.name;
+        obj.transform.GetChild(2).GetChild(1).GetComponentInChildren<TextMesh>().text = i.surname;
+        obj.transform.GetChild(4).GetChild(1).GetComponentInChildren<TextMesh>().text = i.birthToText();
+        obj.transform.GetChild(5).GetChild(1).GetComponentInChildren<TextMesh>().text = i.expToText();
     }
     private void SetPasseport(GameObject obj, Passenger.Passeport p)
     {
@@ -194,7 +199,11 @@ public class PassengerControls : MonoBehaviour
         }
 
         obj.SetActive(true);
-        obj.GetComponentInChildren<TextMesh>().text = p.ToText();
+        obj.transform.GetChild(1).GetChild(1).GetComponentInChildren<TextMesh>().text = p.name;
+        obj.transform.GetChild(2).GetChild(1).GetComponentInChildren<TextMesh>().text = p.surname;
+        obj.transform.GetChild(3).GetChild(1).GetComponentInChildren<TextMesh>().text = p.BirthToText();
+        obj.transform.GetChild(5).GetChild(1).GetComponentInChildren<TextMesh>().text = p.DelToText();
+        obj.transform.GetChild(6).GetChild(1).GetComponentInChildren<TextMesh>().text = p.ValToText();
     }
 
     private void SetRuleList(GameObject obj, List<string> rules)
@@ -216,10 +225,10 @@ public class PassengerControls : MonoBehaviour
         switch(state)
         {
             case FineMachineState.IDLE:
-                obj.GetComponentInChildren<TextMesh>().text = "Fine ?";
+                obj.transform.GetChild(4).GetComponentInChildren<TextMesh>().text = "Mettre une amende ?";
                 break;
             case FineMachineState.FINE_SELECTED:
-                obj.GetComponentInChildren<TextMesh>().text = "Validate/Cancel ?";
+                obj.transform.GetChild(4).GetComponentInChildren<TextMesh>().text = "Confirmez ou annuler votre action !";
                 break;
         }
     }

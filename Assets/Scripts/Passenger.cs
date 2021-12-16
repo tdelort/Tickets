@@ -410,7 +410,7 @@ public class Passenger : MonoBehaviour
 
         public string ToText()
         {
-            return "exp:" + expiredTime.ToString() + " \n validity periode : " + validityPeriod + "h";
+            return expiredTime.ToString();
         }
         public Ticket(bool present, DateTime expiredTime, float validityPeriod)
         {
@@ -428,11 +428,21 @@ public class Passenger : MonoBehaviour
         //in day
         public float validityPeriod;
 
-        public string ToText() 
+        public string DelToText() 
         {
-            return name + " " + surname + "\n" +
-                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"days";
+            DateTime DelivredTime = expiredTime.AddDays(Mathf.RoundToInt(-1f * validityPeriod));
+            return DelivredTime.ToString("d");
         }
+        public string ValToText()
+        {
+            return ((int)validityPeriod).ToString();
+        }
+
+        public string NameToText()
+        {
+            return name + " " + surname;
+        }
+
         public Subscription(bool present, string name, string surname,
             DateTime expiredTime, float validityPeriod)
         {
@@ -452,10 +462,20 @@ public class Passenger : MonoBehaviour
         public DateTime expiredTime;
         //in year
         public float validityPeriod;
-        public string ToText()
+        public string BirthToText()
         {
-            return name + " " + surname + " - " + age + "\n" +
-                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"year";
+            DateTime DelivredTime = expiredTime.AddYears(Mathf.RoundToInt(-1f * age));
+            return DelivredTime.ToString("d");
+        }
+
+        public string DelToText()
+        {
+            DateTime DelivredTime = expiredTime.AddYears(Mathf.RoundToInt(-1f * validityPeriod));
+            return DelivredTime.ToString("d");
+        }
+        public string ValToText()
+        {
+            return ((int)validityPeriod).ToString();
         }
         public Passeport(bool present, string name, string surname, int age,
             DateTime expiredTime, float validityPeriod)
@@ -477,10 +497,15 @@ public class Passenger : MonoBehaviour
         public DateTime expiredTime;
         //in year
         public float validityPeriod;
-        public string ToText()
+        public string birthToText()
         {
-            return name + " " + surname + " - " + age + "\n" +
-                "exp:"+expiredTime.ToString() + " \n validity periode : " + validityPeriod+"year";
+            DateTime DelivredTime = expiredTime.AddYears(Mathf.RoundToInt(-1f * age));
+            return DelivredTime.ToString("d");
+        }
+
+        public string expToText()
+        {
+            return expiredTime.ToString("d");
         }
         public ID(bool present, string name, string surname, int age,
             DateTime expiredTime, float validityPeriod)
@@ -527,7 +552,7 @@ public class Passenger : MonoBehaviour
         Debug.Log("ticket : " + ticket.present + " ; " + ticket.ToText());
         Debug.Log("subscription : " + subscription.present + " ; " +
             subscription.name + " ; " + subscription.surname + " ; " + 
-            subscription.ToText());
+            subscription.DelToText());
         Debug.Log("Sprite type : " + spriteType);
         Debug.Log("Sprite name : " + idleClips[spriteType].name);
         Debug.Log("aoc : " + animatorOverrideController["Idle_bryb"]);

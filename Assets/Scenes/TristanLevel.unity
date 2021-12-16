@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueUI
       objectReference: {fileID: 0}
+    - target: {fileID: 634111716191716050, guid: fb99281eb38243043a0c8e02f5f69a07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 634111716191716055, guid: fb99281eb38243043a0c8e02f5f69a07, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1004,34 +1008,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2080747471053909513, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2450922829713257208, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494569819118350, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494569819118351, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494569967240144, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494570811462042, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494570811462043, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5503494571326342336, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
       propertyPath: m_Name
       value: PassengerControlsUI
@@ -1087,38 +1063,6 @@ PrefabInstance:
     - target: {fileID: 5503494571326342342, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494571326342343, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: size.x
-      value: 12.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494571326342343, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: size.y
-      value: 7.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494571434800536, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494571434800539, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494571679564256, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503494571796586789, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169210948347801538, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 8389063703819317664, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c86cb0e95e136c74ba537a73fe524f15, type: 3}

@@ -852,7 +852,13 @@ MonoBehaviour:
     m_LineSpacing: 1.2
   m_Text: 'Roles :
 
-    Bla bla bla'
+    Core gameplay
+
+    Contenu des
+
+    Dialogues
+
+'
 --- !u!222 &441368682
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3770,7 +3776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5457963095224774744, guid: cffa00491faf8c74da61ce95a71ddabb, type: 3}
+  m_Sprite: {fileID: -3913077743700978815, guid: af79ed2ad12e90349873fb5d2d41005a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
